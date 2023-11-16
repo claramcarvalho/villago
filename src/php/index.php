@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="\src\css\normalize.css">
     <link rel="stylesheet" href="\src\css\index.css">
     <link rel="icon" href="\images\icon\villago_w.ico" />
     <title>Villago - It takes a village!</title>
