@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="\public\css\normalize.css">
-    <link rel="stylesheet" href="\public\css\index.css">
-    <link rel="icon" href="\images\icon\villago_w.ico" />
+    <link rel="stylesheet" href="public\css\normalize.css">
+    <link rel="stylesheet" href="public\css\index.css">
+    <link rel="icon" href="images\icon\villago_w.ico" />
     <title>Villago - It takes a village!</title>
   </head>
   <body>
     <header>
-      <img src="\images\logo\logo_black_no_slogan.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
+      <img src="images\logo\logo_black_no_slogan.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
       <a>Login / SignUp</a>
     </header>
     <section id="section_filter_bar"></section>
