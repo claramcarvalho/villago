@@ -11,7 +11,7 @@
   <body>
     <header class="header">
       <img src="images\logo\logo_black_no_slogan.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
-      <button>Login / SignUp</button>
+      <button onclick="openForm()">Login / SignUp</button>
     </header>
     <div class = "filterBar">
         <div class = "bigSearchBar">
@@ -66,7 +66,29 @@
         </script>
       </section>
     </section>
+    <div id="loginFormDiv">
+      <div class="closeItDiv">
+        <button id="closeIt" onclick="closeForm()">&times;</button>
+      </div>
+      <div class="login-form">
+        <div class="form-box solid">
+          <img class="imgLogin" src="images/logo/villago-transparent-bg.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
+          <form className="theForm">
+            <label class="labelForm">E-mail</label><br></br>
+            <input type="text" name="email" class="login-box"/><br></br>
+            <label class="labelForm">Password</label><br></br>
+            <input type="password" name="password" class="login-box" /><br></br>
+            <input type="submit" value="LOGIN" class="login-btn" />
+            <p class="textQuestion">Doesn't have an account yet?</p>
+            <a class="createAnAccount" href="">Create an account</a>
+          </form>
+        </div>
+      </div>
+    </div>
     <div id="div_footer"></div>
     <footer class="footer">This is the footer</footer>
+
+    
   </body>
 </html>
+<script src="public/index.js"></script>
