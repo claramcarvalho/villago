@@ -10,7 +10,7 @@
   <body>
     <header class="header">
       <img src="images\logo\logo_black_no_slogan.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
-      <button>Login / SignUp</button>
+      <button onclick="openForm()">Login / SignUp</button>
     </header>
     <div class = "filterBar">
         <div class = "bigSearchBar">
@@ -57,7 +57,29 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3785.3786737028167!2d-73.56626970423434!3d45.526724425304884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91bc84bbfa227%3A0x45962228026ccc97!2sParc%20La%20Fontaine!5e0!3m2!1spt-BR!2sca!4v1699019094653!5m2!1spt-BR!2sca" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </section>
     </section>
+    <div id="loginFormDiv">
+      <div class="closeItDiv">
+        <button id="closeIt" onclick="closeForm()">&times;</button>
+      </div>
+      <div class="login-form">
+        <div class="form-box solid">
+          <img class="imgLogin" src="images/logo/villago-transparent-bg.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
+          <form className="theForm">
+            <label class="labelForm">E-mail</label><br></br>
+            <input type="text" name="email" class="login-box"/><br></br>
+            <label class="labelForm">Password</label><br></br>
+            <input type="password" name="password" class="login-box" /><br></br>
+            <input type="submit" value="LOGIN" class="login-btn" />
+            <p class="textQuestion">Doesn't have an account yet?</p>
+            <a class="createAnAccount" href="">Create an account</a>
+          </form>
+        </div>
+      </div>
+    </div>
     <div id="div_footer"></div>
     <footer class="footer">This is the footer</footer>
+
+    
   </body>
 </html>
+<script src="public/index.js"></script>

@@ -155,6 +155,99 @@ header button {
 }
 /* END OF FOOTER */
 
+/* BEGINING OF LOGIN FORM */
+#loginFormDiv{
+    display: none;
+    position: fixed;
+    background-color: white;
+    left: 40%;
+    z-index: 20;
+    border: 2px solid red;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px rgb(54, 52, 52);
+}
+
+.closeItDiv{
+    width: 100%;
+    box-sizing: border-box;
+}
+#closeIt {
+    float: right;
+    box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
+    margin: 5px;
+    border-radius: 50%;
+    border: none;
+    background-color: red;
+    color: white;
+}
+
+.login-form{
+    padding: 10px;
+    width: 300px;
+}
+
+.labelForm{
+    display: inline-flex;
+    font-weight: bold;
+}
+
+.imgLogin{
+    display: block;
+    margin: 10%;
+    width: 80%;
+}
+
+.theForm{
+    padding:10px;
+}
+
+.login-box {
+    background-color: lightgray;
+    box-sizing: border-box;
+    display: block;
+    outline: none;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.login-btn {
+    display: block;
+    box-sizing: border-box;
+    background-color: red;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: auto;
+    margin-bottom: 20px;;
+    width: fit-content;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.textQuestion {
+    display: block;
+    font-size: 10px;
+    width: 100%;
+    margin-top: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+.createAnAccount {
+    display: block;
+    font-size: 10px;
+    width: 100%;
+    margin-top: 20px;
+    margin: auto;
+    text-align: center;
+}
+/* END OF LOGIN FORM */
+
 #div_footer {
     /*maintain same height as footer*/
     height: 30px;
