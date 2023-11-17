@@ -31,9 +31,9 @@ body {
     width: 50%;
 }
 
-#section_services_map iframe {
-    width: 100%;
+#mapGoogle {
     height: 100%;
+    width: 100%;
 }
 
 /* BEGINING OF HEADER */
