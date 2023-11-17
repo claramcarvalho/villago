@@ -48,7 +48,9 @@
             <h2 class="service-title">Mark HandyMan</h2>
             <div class="service-tags">
               <p>Plumber</p>
+              <p>Filipino</p>
             </div>
+            <?php include 'src\loadAllServices.php';?>
           </div>
         </div> 
       </section>
