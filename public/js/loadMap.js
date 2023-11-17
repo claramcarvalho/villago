@@ -1,5 +1,5 @@
 let map, infoWindow;
-window.alert("I'm in!!!")
+//window.alert("I'm in!!!")
 // initMap is now async
 async function initMap() {
     // Request libraries when needed, not in the script tag.
@@ -10,7 +10,7 @@ async function initMap() {
         zoom: 14,
     });
     
-    window.alert("Map should be on!!!")
+    //window.alert("Map should be on!!!")
 
     infoWindow = new google.maps.InfoWindow();
 

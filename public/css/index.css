@@ -1,6 +1,10 @@
 html {
-    position : relative;
     min-height: 100%;
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -104,36 +108,48 @@ header button {
 /* END OF FILTER BAR */
 
 /* BEGINING OF CARDS */
-.card{
+#section_services_list > p {
+    font-size: 1.5rem;
+}
+.serviceCard {
+    height: 20rem;
+    width: 28%;
     background-color: #D9D9D9;
-    box-sizing: border-box;
-    width: fit-content;
-    border-radius: 10px;
-    margin: 20px;
+    border-radius: 20px;
 }
-.Picture img{
-    width: 100%;
-}
-.tagsContainer h3{
-    margin: 0px;
-    padding: 10px;
-    box-sizing: border-box;
-}
-.tag{
-    display: flex;
-    margin-left: 10px;
-}
-.tag p{
-    background-color: #FFDFDF;
-    box-sizing: border-box;
-    width: fit-content;
-    height: fit-content;
-    padding: 0 5px 0 5px;
-    font-size: 10px;
-    border-radius: 5px;
-    margin: 5px 5px 10px 0px;
 
+.service-img {
+    background-image: url(/images/images/handyman.png);
+    background-position: center;
+    background-size: cover;
+    height: 70%;
+    width: 100%;
+    border-radius: 20px;
 }
+
+.service-title {
+    margin: 5px 0 0 10px;
+    font-size: 1.5rem;
+    
+}
+
+.service-tags {
+    display: flex;
+    margin: 5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.service-tags > p {
+    background-color: #FFDFDF;
+    margin: 2px;
+    padding: 3px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+
+
 /* END OF CARDS */
 
 /* BEGINING OF FOOTER */

@@ -40,19 +40,17 @@
         </div>
     </div>
     <section id="section_all_services">
-      <section id="section_services_list"> 
-        <div class='card'>
-            <div class='Picture'>
-                <img src="images\images\handyman.png" alt="Villago Black"></img>
+      <section id="section_services_list">
+        <p>Services available near you</p>
+        <div class ="serviceCard">
+          <div class="service-img"></div>
+          <div class="service-details">
+            <h2 class="service-title">Mark HandyMan</h2>
+            <div class="service-tags">
+              <p>Plumber</p>
             </div>
-            <div class='tagsContainer'>
-                <h3>Mark Handyman</h3>
-                <div class='tag'>
-                    <p>Plumber</p>
-                    <p>Electrician</p>
-                </div>
-            </div>
-        </div>
+          </div>
+        </div> 
       </section>
       <section id="section_services_map">
         <div id="mapGoogle"></div>    
