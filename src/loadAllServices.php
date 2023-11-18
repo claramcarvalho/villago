@@ -31,14 +31,18 @@ function selectAllProviderServices(&$arr) {
 }
 
 
-function displayArray($arr) {
-    foreach($arr as $oneDim) {
-        foreach($oneDim as $key => $value) {
-            echo $key ." - ". $value ."<br>";
+function returnArray($arr) {
+    $cpt = count($arr);
+
+    if ($cpt > 0){
+        foreach($arr as $oneDim) {
+            echo $oneDim["company"].",".$oneDim["service"].",".$oneDim["language"]."|";
         }
+    } else {
+        echo "empty";
     }
+
 }
 
-
 selectAllProviderServices($listProviderServices);
-displayArray($listProviderServices);
+returnArray($listProviderServices);

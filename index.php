@@ -41,18 +41,6 @@
     </div>
     <section id="section_all_services">
       <section id="section_services_list">
-        <p>Services available near you</p>
-        <div class ="serviceCard">
-          <div class="service-img"></div>
-          <div class="service-details">
-            <h2 class="service-title">Mark HandyMan</h2>
-            <div class="service-tags">
-              <p>Plumber</p>
-              <p>Filipino</p>
-            </div>
-            <?php include 'src\loadAllServices.php';?>
-          </div>
-        </div> 
       </section>
       <section id="section_services_map">
         <div id="mapGoogle"></div>    
@@ -90,5 +78,6 @@
 
     
   </body>
+  
 </html>
-<script src="public/index.js"></script>
+<script src="public\js\index.js"></script>

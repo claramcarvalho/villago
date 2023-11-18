@@ -111,6 +111,12 @@ header button {
 /* END OF FILTER BAR */
 
 /* BEGINING OF CARDS */
+#section_services_list {
+    display: flex;
+    gap: 20px;
+    overflow-y: scroll;
+}
+
 #section_services_list > p {
     font-size: 1.5rem;
 }
@@ -132,15 +138,14 @@ header button {
 
 .service-title {
     margin: 5px 0 0 10px;
-    font-size: 1.5rem;
-    
+    font-size: 1.5rem; 
 }
 
 .service-tags {
     display: flex;
     margin: 5px;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .service-tags > p {
