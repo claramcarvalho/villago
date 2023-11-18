@@ -8,11 +8,14 @@
     <title>Villago - It takes a village!</title>
     <script type="module" src="public\js\loadMap.js"></script>
   </head>
+
   <body>
+    
     <header class="header">
       <img src="images\logo\logo_black_no_slogan.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
       <button onclick="openForm()">Login / SignUp</button>
     </header>
+
     <div class = "filterBar">
         <div class = "bigSearchBar">
           <div class = "seachBarIcon">
@@ -73,11 +76,9 @@
         </div>
       </div>
     </div>
-    <div id="div_footer"></div>
-    <footer class="footer">This is the footer</footer>
-
-    
+    <footer>
+      <p>Copyright &copy; 2023 Villago</a></p>
+    </footer>
   </body>
-  
 </html>
 <script src="public\js\index.js"></script>

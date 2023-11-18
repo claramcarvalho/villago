@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 
 html {
-    min-height: 100%;
     font-size: 62.5%;
     font-family: 'Open Sans', sans-serif;
 }
@@ -11,31 +10,38 @@ html {
 }
 
 body {
-    display: flex;
+/*     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: stretch;
-    align-content: space-between;
-    /* height: 100vh; */
+    align-content: space-between; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 50px 1fr;
+    grid-template-areas: "header" "filter" "all_services";
+    height: 100vh;
+    gap: 10px;
 }
+
+/* #section_all_services {
+    display: flex;
+    padding: 20px;
+    height: 100vh;
+}
+ */
 
 #section_all_services {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
-    align-content: stretch;
-    margin: 10px;
-    height: 70vh;
+    grid-area: all_services;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "services map";
+    width: 100%;
+    padding: 0 20px;
 }
 
-#section_services_list {
-    width: 50%;
-}
 
 #section_services_map {
-    /* flex-grow: 1; */
-    width: 50%;
+    grid-area: map;
 }
 
 #mapGoogle {
@@ -45,9 +51,9 @@ body {
 
 /* BEGINING OF HEADER */
 .header {
+    grid-area: header;
     background-color: black;
     box-sizing: border-box;
-    width: 100%;
     padding: 0px 15px;
     height: 80px;
     display: flex;
@@ -76,6 +82,7 @@ header button {
 
 /* BEGINING OF FILTER BAR */
 .filterBar {
+    grid-area: filter;
     display: inline-flex;
     width: min-content;
     box-sizing: border-box;
@@ -112,6 +119,7 @@ header button {
 
 /* BEGINING OF CARDS */
 #section_services_list {
+    grid-area: services;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -277,16 +285,22 @@ header button {
 }
 /* END OF LOGIN FORM */
 
-#div_footer {
+footer {
     /*maintain same height as footer*/
     height: 30px;
+    position: static;
+    bottom: 0;
+    background-color: black;
+    text-align: center;
+    width: 100%;
+    font-size: 1.5rem;
+    color: #D9D9D9;
 }
 
-footer {
+/* footer {
     background-color: black;
-    position: absolute;
     left : 0;
     bottom: 0;
     width: 100vw;
     height: 30px;
-}
+} */
