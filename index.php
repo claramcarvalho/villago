@@ -13,7 +13,19 @@
     
     <header class="header">
       <img src="images\logo\logo_black_no_slogan.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
-      <button onclick="openForm()">Login / SignUp</button>
+      <!-- Condition to display the correct button in case user is logged in or not. Logic on login.php file -->
+    <?php 
+    global $isLoggedIn;
+    if ($isLoggedIn == true): 
+    ?>
+        <button onclick="openSettings()">Settings</button>
+      <?php
+      else: 
+      ?>
+        <button onclick="openForm()">Login / SignUp</button>
+      <?php 
+      endif; 
+      ?>
     </header>
 
     <div class = "filterBar">
@@ -72,6 +84,27 @@
             <input type="submit" value="LOGIN" class="login-btn" />
             <p class="textQuestion">Doesn't have an account yet?</p>
             <a class="createAnAccount" href="">Create an account</a>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="settingsFormDiv">
+      <div class="closeItDiv">
+        <button id="closeIt" onclick="closeForm()">&times;</button>
+      </div>
+      <div class="login-form">
+        <div class="form-box solid">
+          <img class="imgLogin" src="images/logo/villago-transparent-bg.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
+          <form className="theForm">
+            <label class="labelForm">Service</label><br></br>
+            <input type="text" name="serviceType" class="login-box"/><br></br>
+            <label class="labelForm">Language</label><br></br>
+            <input type="password" name="language" class="login-box" /><br></br>
+            <label class="labelForm">Distance</label><br></br>
+            <input type="password" name="distance" class="login-box" /><br></br>
+            <label class="labelForm">Price</label><br></br>
+            <input type="password" name="price" class="login-box" /><br></br>
+            <input type="submit" value="SEARCH" class="login-btn" />
           </form>
         </div>
       </div>
