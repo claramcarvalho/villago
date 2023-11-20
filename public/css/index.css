@@ -1,34 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
 html {
-    position : relative;
-    min-height: 100%;
+    font-size: 62.5%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    display: flex;
+/*     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: stretch;
-    align-content: space-between;
-    /* height: 100vh; */
+    align-content: space-between; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 50px 1fr;
+    grid-template-areas: "header" "filter" "all_services";
+    height: 100vh;
+    gap: 10px;
 }
+
+/* #section_all_services {
+    display: flex;
+    padding: 20px;
+    height: 100vh;
+}
+ */
 
 #section_all_services {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
-    align-content: stretch;
-    margin: 10px;
-    height: 70vh;
+    grid-area: all_services;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "services map";
+    width: 100%;
+    padding: 0 20px;
 }
 
-#section_services_list {
-    width: 50%;
-}
 
 #section_services_map {
-    /* flex-grow: 1; */
-    width: 50%;
+    grid-area: map;
 }
 
 #mapGoogle {
@@ -38,9 +51,9 @@ body {
 
 /* BEGINING OF HEADER */
 .header {
+    grid-area: header;
     background-color: black;
     box-sizing: border-box;
-    width: 100%;
     padding: 0px 15px;
     height: 80px;
     display: flex;
@@ -69,6 +82,7 @@ header button {
 
 /* BEGINING OF FILTER BAR */
 .filterBar {
+    grid-area: filter;
     display: inline-flex;
     width: min-content;
     box-sizing: border-box;
@@ -104,36 +118,59 @@ header button {
 /* END OF FILTER BAR */
 
 /* BEGINING OF CARDS */
-.card{
-    background-color: #D9D9D9;
-    box-sizing: border-box;
-    width: fit-content;
-    border-radius: 10px;
-    margin: 20px;
-}
-.Picture img{
-    width: 100%;
-}
-.tagsContainer h3{
-    margin: 0px;
-    padding: 10px;
-    box-sizing: border-box;
-}
-.tag{
+#section_services_list {
+    grid-area: services;
     display: flex;
-    margin-left: 10px;
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow-y: scroll;
 }
-.tag p{
-    background-color: #FFDFDF;
-    box-sizing: border-box;
-    width: fit-content;
-    height: fit-content;
-    padding: 0 5px 0 5px;
-    font-size: 10px;
-    border-radius: 5px;
-    margin: 5px 5px 10px 0px;
 
+#section_services_list > p {
+    font-size: 1.5rem;
 }
+.serviceCard {
+    height: 20rem;
+    width: 28%;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+}
+
+.serviceCard:hover {
+    cursor: pointer;
+}
+
+.service-img {
+    background-image: url(/images/images/handyman.png);
+    background-position: center;
+    background-size: cover;
+    height: 70%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.service-title {
+    margin: 5px 0 0 10px;
+    font-size: 1.5rem; 
+}
+
+.service-tags {
+    display: flex;
+    margin: 5px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.service-tags > p {
+    background-color: #FFDFDF;
+    margin: 2px;
+    padding: 3px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+
+
 /* END OF CARDS */
 
 /* BEGINING OF FOOTER */
@@ -155,16 +192,115 @@ header button {
 }
 /* END OF FOOTER */
 
-#div_footer {
-    /*maintain same height as footer*/
-    height: 30px;
+/* BEGINING OF LOGIN FORM */
+#loginFormDiv{
+    display: none;
+    position: fixed;
+    background-color: white;
+    left: 40%;
+    z-index: 20;
+    border: 2px solid red;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px rgb(54, 52, 52);
 }
 
+.closeItDiv{
+    width: 100%;
+    box-sizing: border-box;
+}
+#closeIt {
+    float: right;
+    box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
+    margin: 5px;
+    border-radius: 50%;
+    border: none;
+    background-color: red;
+    color: white;
+}
+
+.login-form{
+    padding: 10px;
+    width: 300px;
+}
+
+.labelForm{
+    display: inline-flex;
+    font-weight: bold;
+}
+
+.imgLogin{
+    display: block;
+    margin: 10%;
+    width: 80%;
+}
+
+.theForm{
+    padding:10px;
+}
+
+.login-box {
+    background-color: lightgray;
+    box-sizing: border-box;
+    display: block;
+    outline: none;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.login-btn {
+    display: block;
+    box-sizing: border-box;
+    background-color: red;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: auto;
+    margin-bottom: 20px;;
+    width: fit-content;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.textQuestion {
+    display: block;
+    font-size: 10px;
+    width: 100%;
+    margin-top: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+.createAnAccount {
+    display: block;
+    font-size: 10px;
+    width: 100%;
+    margin-top: 20px;
+    margin: auto;
+    text-align: center;
+}
+/* END OF LOGIN FORM */
+
 footer {
+    /*maintain same height as footer*/
+    height: 30px;
+    position: static;
+    bottom: 0;
     background-color: black;
-    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 1.5rem;
+    color: #D9D9D9;
+}
+
+/* footer {
+    background-color: black;
     left : 0;
     bottom: 0;
     width: 100vw;
     height: 30px;
-}
+} */

@@ -8,11 +8,26 @@
     <title>Villago - It takes a village!</title>
     <script type="module" src="public\js\loadMap.js"></script>
   </head>
+
   <body>
+    
     <header class="header">
       <img src="images\logo\logo_black_no_slogan.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
-      <button>Login / SignUp</button>
+      <!-- Condition to display the correct button in case user is logged in or not. Logic on login.php file -->
+    <?php 
+    global $isLoggedIn;
+    if ($isLoggedIn == true): 
+    ?>
+        <button onclick="openSettings()">Settings</button>
+      <?php
+      else: 
+      ?>
+        <button onclick="openForm()">Login / SignUp</button>
+      <?php 
+      endif; 
+      ?>
     </header>
+
     <div class = "filterBar">
         <div class = "bigSearchBar">
           <div class = "seachBarIcon">
@@ -40,19 +55,7 @@
         </div>
     </div>
     <section id="section_all_services">
-      <section id="section_services_list"> 
-        <div class='card'>
-            <div class='Picture'>
-                <img src="images\images\handyman.png" alt="Villago Black"></img>
-            </div>
-            <div class='tagsContainer'>
-                <h3>Mark Handyman</h3>
-                <div class='tag'>
-                    <p>Plumber</p>
-                    <p>Electrician</p>
-                </div>
-            </div>
-        </div>
+      <section id="section_services_list">
       </section>
       <section id="section_services_map">
         <div id="mapGoogle"></div>    
@@ -66,7 +69,49 @@
         </script>
       </section>
     </section>
-    <div id="div_footer"></div>
-    <footer class="footer">This is the footer</footer>
+    <div id="loginFormDiv">
+      <div class="closeItDiv">
+        <button id="closeIt" onclick="closeForm()">&times;</button>
+      </div>
+      <div class="login-form">
+        <div class="form-box solid">
+          <img class="imgLogin" src="images/logo/villago-transparent-bg.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
+          <form className="theForm">
+            <label class="labelForm">E-mail</label><br></br>
+            <input type="text" name="email" class="login-box"/><br></br>
+            <label class="labelForm">Password</label><br></br>
+            <input type="password" name="password" class="login-box" /><br></br>
+            <input type="submit" value="LOGIN" class="login-btn" />
+            <p class="textQuestion">Doesn't have an account yet?</p>
+            <a class="createAnAccount" href="">Create an account</a>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="settingsFormDiv">
+      <div class="closeItDiv">
+        <button id="closeIt" onclick="closeForm()">&times;</button>
+      </div>
+      <div class="login-form">
+        <div class="form-box solid">
+          <img class="imgLogin" src="images/logo/villago-transparent-bg.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
+          <form className="theForm">
+            <label class="labelForm">Service</label><br></br>
+            <input type="text" name="serviceType" class="login-box"/><br></br>
+            <label class="labelForm">Language</label><br></br>
+            <input type="password" name="language" class="login-box" /><br></br>
+            <label class="labelForm">Distance</label><br></br>
+            <input type="password" name="distance" class="login-box" /><br></br>
+            <label class="labelForm">Price</label><br></br>
+            <input type="password" name="price" class="login-box" /><br></br>
+            <input type="submit" value="SEARCH" class="login-btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>Copyright &copy; 2023 Villago</a></p>
+    </footer>
   </body>
 </html>
+<script src="public\js\index.js"></script>
