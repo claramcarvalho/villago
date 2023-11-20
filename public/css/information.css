@@ -1,0 +1,268 @@
+html, body {
+    height: 100%;
+}
+.informationGrid {
+    display:grid;
+    grid-template-columns: min-content min-content;
+    height: fit-content;
+    margin: 10px;
+
+}
+#headerPersonalInformation{
+    width: 100%;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 30px;
+    background-color:  hsl(0,0%,80%);
+    padding: 20px 0 20px 0;
+}
+
+#personalPage{
+    position: relative;
+    display: none;
+    box-sizing: border-box;
+    width: min-content;
+    background-color: rgba(211, 211, 211, 0.39);
+}
+
+#serviceProviderPage{
+    position: relative;
+    box-sizing: border-box;
+    display: none;
+    width: min-content;
+    background-color: rgba(211, 211, 211, 0.39);
+}
+
+#culturalPromoterPage{
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: min-content;
+    background-color: rgba(211, 211, 211, 0.39);
+}
+
+
+/* BEGINING OF WATERMARK */
+#watermark {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: min-content;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+
+
+/* BEGINING SIDE BUTTONS */
+#tabButtons {
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 10px 0 10px;
+    overflow: hidden;
+    border: 1px solid red;
+    width: 100%;
+    box-sizing: border-box;
+}
+table {
+    padding: 0;
+    margin: 0px;
+    border-collapse: collapse;
+}
+tr {
+    margin: 0px;
+    padding: 0px;
+    border-collapse: collapse;
+}
+td{
+    margin: 0px;
+    padding: 0;
+    border-style: hidden;
+}
+#personalInformation {
+    background-color: transparent;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    padding: 50px 10px;
+    font-size: 20px;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    rotate: 180deg;
+    border: none;
+}
+#cellPersonalInformation {
+    background-color: hsl(0,0%,90%);
+    border-radius: 20px 0 0 20px;
+}
+#cellPersonalInformation:hover {
+    background-color: hsl(0,0%,80%);
+    border-radius: 20px 0 0 20px;
+}
+#serviceProviderInformation {
+    background-color: transparent;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 50px 10px;
+    font-size: 20px;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    rotate: 180deg;
+    border: none;
+}
+#cellServiceProviderInformation {
+    background-color: hsl(0,0%,70%);
+    border-radius: 20px 0 0 20px;
+}
+#cellServiceProviderInformation:hover {
+    background-color: hsl(0,0%,60%);
+}
+#culturalPromoterInformation {
+    background-color: transparent;
+    box-sizing: border-box;
+    padding: 50px 10px;
+    font-size: 20px;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    rotate: 180deg;
+    border: none;
+}
+#cellCulturalPromoterInformation {
+    background-color: hsl(0,100%,90%);
+    border-radius: 20px 0 0 20px;
+}
+#cellCulturalPromoterInformation:hover {
+    background-color: hsl(0,100%,80%);
+}
+/* END SIDE BUTTONS */
+
+/* BEGINING OF THE CONTENT PERSONAL INFORMATION */
+.contentGridPersonalInformation{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+}
+/* BEGINING OF THE LEFT CONTENT */
+
+.leftInformation{
+    display: flex;
+    flex-direction: column;
+    padding: 30px 30px 50px 30px;
+}
+.informationPage {
+    display: flex;
+    font-size: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+.inputInformationText {
+    box-sizing: content-box;
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: hsl(0,0%,70%);
+}
+/* END OF THE LEFT CONTENT */
+
+/* BEGINING OF THE RIGHT CONTENT */
+.rightInformation{
+    display: block;
+    box-sizing: border-box;
+    width: fit-content;
+    flex-direction: column;
+    padding: 30px 30px 50px 30px;
+}
+.informationPicture {
+    align-content: center;
+}
+#inputPicture {
+    box-sizing: content-box;
+    display: block;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: hsl(0,0%,70%);
+    margin: auto;
+}
+/* END OF THE RIGHT CONTENT
+
+/* SERVICE PROVIDER INFORMATION */
+#headerServiceProviderInformation{
+    width: 100%;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 30px;
+    background-color:  hsl(0,0%,70%);
+    padding: 20px 0 20px 0;
+}
+
+#aLittleAboutYou {
+    box-sizing: content-box;
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 120px;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: hsl(0,0%,70%);
+}
+
+#waysToContactYou {
+    box-sizing: content-box;
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: hsl(0,0%,70%);
+}
+
+/* BEGINING PICTURE GALLERY */
+.pictureGalleryLabelDiv {
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.pictureGallery {
+    display: flex;
+    box-sizing: border-box;
+}
+.pictureInGallery{
+    background-color: yellow;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+    box-sizing: content-box;
+}
+
+#addPicture {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: fit-content;
+    padding: 10px;
+    margin: 5px;
+}
+
+/* CULTURAL PROMOTER */
+#headerCulturalPromoterInformation{
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 30px;
+    background-color:   hsl(0,100%,80%);
+    padding: 20px 0 20px 0;
+}
