@@ -31,7 +31,7 @@ $countEntities = mysqli_num_rows($queryEntitiesForMaps);
             */
             $cpt++;
         }
-                
+        
         $entitiesJson = json_encode($arrToJson);
         echo $entitiesJson;
     }
