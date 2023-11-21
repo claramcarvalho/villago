@@ -1,6 +1,7 @@
 let map, infoWindow;
 var objectXHRJsonToGoogleMaps;
-var jsonToPlot;
+var arrayToPlot;
+//var entities;
 //window.alert("I'm in!!!")
 // initMap is now async
 
@@ -8,6 +9,7 @@ var jsonToPlot;
 async function getJson(){
     //++++++++bringing DATA to JSON obj
     objectXHRJsonToGoogleMaps = null;
+
     function sendXHR(type, url, data, callback) {
         objectXHRJsonToGoogleMaps = new XMLHttpRequest();
         objectXHRJsonToGoogleMaps.open(type, url, true);
@@ -23,7 +25,22 @@ async function getJson(){
             "src/loadMapsServicesEvents.php", 
             null, 
             function(response) {
-                jsonToPlot = JSON.parse(response);
+                arrayToSaveInLocalStorage = JSON.parse(response);
+
+                var objToSaveLocalStorage = { entity: [] }
+                for (var i in arrayToSaveInLocalStorage)
+                {
+                    var oneEntity = arrayToSaveInLocalStorage[i];
+
+                    objToSaveLocalStorage.entity.push({
+                        "id" : oneEntity.id,
+                        "name" : oneEntity.name,
+                        "lat" : oneEntity.lat,
+                        "lgn" : oneEntity.lgn
+                    });
+                }
+                // SAVING IN LOCAL STORAGE FOR USE WHEN LOADING MAP
+                localStorage.setItem('allEntities', JSON.stringify(dataFromServer,null,2));
             }
     )
 }
@@ -37,12 +54,34 @@ async function initMap() {
         zoom: 14,
     });
 
-    // Create a <script> tag and set the json obj as the source.
-    ///////////NOT WORKING
-    //////////TRY TO SAVE JSON IN LOCAL STORAGE --> WEB CLIENT
-    const script = document.createElement("script");
-    script.src = jsonToPlot;
-    document.getElementsByTagName("head")[0].appendChild(script);
+    //going through the JSON that was saved in local storage (from PHP, function getJson())
+    //////////REF.:
+    ////////// https://www.aspsnippets.com/Articles/1131/Google-Maps-API-V3-Load-Add-markers-to-Google-Map-using-JSON-and-JavaScript/
+    var listOfEntities = JSON.parse(localStorage.getItem('allEntities'));  /////// OBJECT
+    for (const oneEntity of listOfEntities.entity)
+    {
+        var entLatLng = new google.maps.LatLng(oneEntity.lat,oneEntity.lgn);
+        var oneMarker = new google.maps.Marker({
+            position: entLatLng, 
+            map: map, 
+            title:oneEntity.name
+        });
+
+        const posMarker = 
+                {
+                    lat: oneEntity.lat,
+                    lng: oneEntity.lgn,
+                };
+
+        (function (oneMarker, oneEntity) {
+            google.maps.event.addListener(oneMarker, "click", function (e) {
+                infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + oneEntity.name + "</div>");
+                infoWindow.open(map, oneMarker);
+                map.setCenter(posMarker);
+            });
+        })(oneMarker, oneEntity);
+        //latlngbounds.extend(marker.position);
+    }
 
     infoWindow = new google.maps.InfoWindow();
 
@@ -61,8 +100,6 @@ async function initMap() {
                 infoWindow.setContent("Location found.");
                 infoWindow.open(map);
                 map.setCenter(pos);
-
-                //window.alert(pos.lat)
             },
             () => 
             {
@@ -85,18 +122,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos)
     infoWindow.open(map);
 }
 
-const items_callback = function (results) {
-    for (let i = 0; i < results.length; i++) {
-        const latLng = new google.maps.LatLng(results[i].lat, results[i].lng);
-
-        new google.maps.Marker({
-            position: latLng,
-            map: map,
-        });
-    }
-};
-
 getJson();
 initMap();
-window.items_callback = items_callback;
 

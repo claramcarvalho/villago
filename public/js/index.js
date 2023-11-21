@@ -59,7 +59,7 @@ function loadAllServices(arr) {
     const section_services_list = document.querySelector("#section_services_list");
     //console.log(section_services_list);
     for (let i = 0; i < arr.length; i++) {
-        console.log("Execute");
+        //console.log("Execute");
         section_services_list.appendChild(createCard(arr[i]));
     }
 } 
