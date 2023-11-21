@@ -1,23 +1,27 @@
 
-// load website
-// javascript fetch from database
-// generate cards
-// display on client
+function openForm() {
+    
+    const box = document.getElementById("loginFormDiv");
+    box.style.display = "block";
+
+}
+
+function closeForm() {
+    
+    const box = document.getElementById("loginFormDiv");
+    box.style.display = "none";
+
+}
+
 populateServices();
 
 var objectXHR;
-
 function populateServices() {
-    console.log("Hello");
-
-	// 1 - create an XMLHttpRequest object
 	objectXHR = new XMLHttpRequest();
 		
-	// 2 - call the server and make a request
 	objectXHR.open("get","src/loadAllServices.php",true);
 	objectXHR.send(null);
 		
-	// 3 - call to js function whenever the state changes
 	objectXHR.onreadystatechange = doPopulateServices;
 }
 
@@ -31,16 +35,12 @@ function doPopulateServices() {
         //console.log(arrayServices);
         loadAllServices(arrayServices);
 
-
         // handle no results
         if (result.trim() == "empty") {
             alert("No Results Found!");
         }
-        
     }
-
 }
-
 
 function generateArrayServices(arrServices) {
     let arrayServices = [];
@@ -51,13 +51,11 @@ function generateArrayServices(arrServices) {
             arrayServices.push(temp); 
         }   
     });
-
     return arrayServices;
 }
 
 function loadAllServices(arr) {
     const section_services_list = document.querySelector("#section_services_list");
-    //console.log(section_services_list);
     for (let i = 0; i < arr.length; i++) {
         console.log("Execute");
         section_services_list.appendChild(createCard(arr[i]));
