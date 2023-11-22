@@ -1,0 +1,46 @@
+.tableMyEvents {
+    border-collapse: collapse !important;
+    border-collapse: separate;
+    border-radius: 20px 20px 0 0;
+    margin: 20px;
+    padding: 20px;
+    background-color: hsl(0,100%,97%);
+}
+.myEventsHeader {
+    font-size: 24px;
+    background-color: hsl(0,0%,80%);
+    border: none;
+    border-radius: 20px 20px 0 0;
+    padding: 10px;
+}
+.myEventsSecondaryHeader{
+    background-color: red;
+    padding: 10px;
+}
+.myEventsSecondaryHeader th{
+    background-color: red;
+    padding: 10px;
+}
+.upcomingEvents{
+    text-align: center;
+    border: none;
+    padding: 10px 0;
+}
+.eventDescription td{
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px 10px;
+    background-color:  hsl(0,0%,95%);
+}
+.addEventsButtonTr{
+    text-align: center;
+}
+#addEventsButton{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+.tableIcons{
+    padding: 5px;
+}

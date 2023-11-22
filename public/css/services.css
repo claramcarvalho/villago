@@ -1,0 +1,50 @@
+.myServicesMainDiv {
+    width: 50vw;
+    height: max-content;
+    padding-bottom: 50px;
+    background-color:  hsl(0,0%,95%);
+}
+.myServicesHeader {
+    width: 100%;
+    font-size: 24px;
+    font-weight: bolder;
+    box-sizing: border-box;
+    background-color: hsl(0,0%,70%);
+    padding: 10px;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+}
+.myServicesContainer {
+    background-color:  hsl(0,0%,98%);
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    display: flex;
+    border: 1px solid gray;
+    box-shadow: 0px 0px 10px gray inset;
+    padding:20px;
+    margin: 50px;
+    border-radius: 20px;
+}
+.oneService {
+    background-color: hsl(0,100%,90%);
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: fit-content;
+}
+#addNewService {
+    background-color: hsl(0,0%,85%);
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    border: none;
+    vertical-align: middle;
+}
+svg {
+    margin-left: 10px;
+    width: auto;
+}
