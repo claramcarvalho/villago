@@ -25,7 +25,7 @@ async function getJson(){
             "src/loadMapsServicesEvents.php", 
             null, 
             function(response) {
-                arrayToSaveInLocalStorage = JSON.parse(response);
+                var arrayToSaveInLocalStorage = JSON.parse(response);
 
                 var objToSaveLocalStorage = { entity: [] }
                 for (var i in arrayToSaveInLocalStorage)
@@ -40,7 +40,7 @@ async function getJson(){
                     });
                 }
                 // SAVING IN LOCAL STORAGE FOR USE WHEN LOADING MAP
-                localStorage.setItem('allEntities', JSON.stringify(dataFromServer,null,2));
+                localStorage.setItem('allEntities', JSON.stringify(objToSaveLocalStorage,null,2));
             }
     )
 }
@@ -60,11 +60,24 @@ async function initMap() {
     var listOfEntities = JSON.parse(localStorage.getItem('allEntities'));  /////// OBJECT
     for (const oneEntity of listOfEntities.entity)
     {
+        var markerIcon;
+        var entityType = (oneEntity.id).slice(0,2);
+        if (entityType == "EV") {
+            markerIcon = 'images/icon/event.png';
+        }
+        else if (entityType == "PR") {
+            markerIcon = 'images/icon/service.png';
+        }
+        else{
+            markerIcon = 'images/icon/default.png';
+        }
+        
         var entLatLng = new google.maps.LatLng(oneEntity.lat,oneEntity.lgn);
         var oneMarker = new google.maps.Marker({
             position: entLatLng, 
             map: map, 
-            title:oneEntity.name
+            title:oneEntity.name,
+            icon: markerIcon
         });
 
         const posMarker = 
