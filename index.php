@@ -32,22 +32,13 @@
 
     <div class = "filterBar">
         <div class = "bigSearchBar">
-          <button type="button" id="filter-country" class = "seachBarIcon">Country</button>
-          <button type="button" id="filter-lang" class = "seachBarIcon">Language</button>
-          <button type="button" id="filter-serv" class = "seachBarIcon">Services</button>
-        
-          <!-- <div id="filter-country" class = "seachBarIcon">
-            <p>Country</p>
-          </div>
-          <div id="filter-lang" class = "seachBarIcon">
-            <p>Language</p>
-          </div>
-          <div id="filter-serv" class = "seachBarIcon">
-            <p>Services</p>
-          </div> -->
+          <button type="submit" id="filter-country" class = "seachBarIcon">Country</button>
+          <button type="submit" id="filter-lang" class = "seachBarIcon">Language</button>
+          <button type="submit" id="filter-serv" class = "seachBarIcon">Services</button>
+          <input type="text" id="query" name="query" placeholder="Search for...">
         </div>
         <div class = "smallSearchBar">
-
+          <button type="button" id="" class = "">H</button>
         </div>
     </div>
     <section id="section_all_services">

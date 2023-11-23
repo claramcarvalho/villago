@@ -19,7 +19,7 @@ button:hover {
 body {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px 50px 1fr;
+    grid-template-rows: 80px 50px 100%;
     grid-template-areas: "header" "filter" "all_services";
     height: 100vh;
     gap: 10px;
@@ -86,6 +86,7 @@ header button {
     gap: 10px;
     padding: 0 15px;
 }
+
 .bigSearchBar {
     width: 100%;
     border: 2px solid black;
@@ -101,7 +102,8 @@ header button {
     border: 2px solid black;
     border-radius: 10px;
 }
-.seachBarIcon{
+
+.seachBarIcon {
     width: 150px;
     font-size: 1.5rem;
     display: flex;
@@ -112,14 +114,14 @@ header button {
     gap: 2px;
     border-radius: 5px;
     border: 2px solid transparent;
+    font-weight: bold;
 }
 
-.seachBarIcon > p {
-    padding: 0.6rem;
-    font-weight: bold;
-    color: black;
-    font-size: 1.5rem;
-    margin: 0;
+#query {
+    height: 2.5rem;
+    font-size: 2rem;
+    width: 100%;
+    border: none;
 }
 
 #filter-country::before {

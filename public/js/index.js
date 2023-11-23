@@ -46,27 +46,47 @@ function activateCulturalPromoterTab() {
     culturalPromoter.style.display = "block";
 }
 
-populateServices();
+
 
 var objectXHR;
-function populateServices() {
+function populateHomeDisplay() {
 	objectXHR = new XMLHttpRequest();
-		
+	
 	objectXHR.open("get","src/loadAllServices.php",true);
 	objectXHR.send(null);
 		
-	objectXHR.onreadystatechange = doPopulateServices;
+	objectXHR.onreadystatechange = doPopulateHomeDisplay;
 }
 
-function doPopulateServices() {
+function populateLanguages() {
+	objectXHR = new XMLHttpRequest();
+	
+    langName = document.getElementById("query").value;
+	objectXHR.open("get","src/filterByLanguage.php?query="+langName,true);
+	objectXHR.send(null);
+		
+	objectXHR.onreadystatechange = doPopulateHomeDisplay;
+}
+
+function populateServices() {
+	objectXHR = new XMLHttpRequest();
+	
+    servName = document.getElementById("query").value;
+	objectXHR.open("get","src/filterByService.php?query="+servName,true);
+	objectXHR.send(null);
+		
+	objectXHR.onreadystatechange = doPopulateHomeDisplay;
+}
+
+function doPopulateHomeDisplay() {
     if (objectXHR.readyState == 4 && objectXHR.status == 200) {
         
         // responseText = echo by php file
         result = objectXHR.responseText;
-
-        let arrayServices = generateArrayServices(result);
+        
+        let arrayHomeDisplay = generateArrayHomeDisplay(result);
         //console.log(arrayServices);
-        loadAllServices(arrayServices);
+        loadHomeDisplay(arrayHomeDisplay);
 
         // handle no results
         if (result.trim() == "empty") {
@@ -75,25 +95,30 @@ function doPopulateServices() {
     }
 }
 
-function generateArrayServices(arrServices) {
-    let arrayServices = [];
-    let oneRow = arrServices.split("|");
+function generateArrayHomeDisplay(arrServEvents) {
+    let arr = [];
+    let oneRow = arrServEvents.split("|");
     oneRow.forEach(row => {
         let temp = row.split(",");
         if (temp.length == 3) {
-            arrayServices.push(temp); 
+            arr.push(temp); 
         }   
     });
-    return arrayServices;
+    return arr;
 }
 
-function loadAllServices(arr) {
+function loadHomeDisplay(arr) {
     const section_services_list = document.querySelector("#section_services_list");
     for (let i = 0; i < arr.length; i++) {
         //console.log("Execute");
         section_services_list.appendChild(createCard(arr[i]));
     }
 } 
+
+function reloadAllServices() {
+    const section_services_list = document.querySelector("#section_services_list");
+    section_services_list.innerHTML = '';
+}
 
 function createCard(oneRow) {
     const divCard = document.createElement("div");
@@ -132,3 +157,27 @@ function createCard(oneRow) {
 
     return divCard;
 }
+
+populateHomeDisplay();
+
+
+const filterLang = document.querySelector("#filter-lang");
+filterLang.addEventListener('click', () => {
+    reloadAllServices();
+    populateLanguages();
+});
+
+const filterServices = document.querySelector("#filter-serv");
+filterServices.addEventListener('click', () => {
+    reloadAllServices();
+    populateServices();
+});
+
+const queryBox = document.querySelector("#query");
+queryBox.addEventListener('input',() => {
+
+    if (queryBox.value === "") {
+        reloadAllServices();
+        populateHomeDisplay();
+    }
+})
