@@ -9,25 +9,21 @@ html {
     box-sizing: border-box;
 }
 
+button:hover {
+    cursor: pointer;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
 body {
-/*     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    align-content: space-between; */
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px 50px 1fr;
+    grid-template-rows: 80px 50px 100%;
     grid-template-areas: "header" "filter" "all_services";
     height: 100vh;
     gap: 10px;
 }
-
-/* #section_all_services {
-    display: flex;
-    padding: 20px;
-    height: 100vh;
-}
- */
 
 #section_all_services {
     grid-area: all_services;
@@ -35,7 +31,6 @@ body {
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: auto;
     grid-template-areas: "services map";
-    width: 100%;
     padding: 0 20px;
 }
 
@@ -83,38 +78,75 @@ header button {
 /* BEGINING OF FILTER BAR */
 .filterBar {
     grid-area: filter;
-    display: inline-flex;
-    width: min-content;
-    box-sizing: border-box;
-    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    box-sizing: border-box; 
+    width: 100%;
+    gap: 10px;
+    padding: 0 15px;
 }
+
 .bigSearchBar {
-    display: flex;
-    float: left;
-    box-sizing: border-box;
-    width: 93vw;
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
+    width: 100%;
+    border: 2px solid black;
     border-radius: 10px;
-    padding: 10px 80% 10px 1%;
-    margin: 5px 0px 0px 1%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
 }
-.seachBarIcon{
-    margin-right: 20px;
-}
+
 .smallSearchBar {
-    display: flex;
-    box-sizing: border-box;
-    size: 10%;
-    width: 5vw;
-    border-top: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
+    width: 60px;
+    border: 2px solid black;
     border-radius: 10px;
-    padding: 10px 15px 10px 15px;
-    margin: 5px 0px 0px 0px;
 }
+
+.seachBarIcon {
+    width: 150px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E60012;
+    height: 3rem;
+    gap: 2px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    font-weight: bold;
+}
+
+#query {
+    height: 2.5rem;
+    font-size: 2rem;
+    width: 100%;
+    border: none;
+}
+
+#filter-country::before {
+    content: url(/images/images/earth-americas-solid.svg);
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+#filter-lang::before {
+    content: url(/images/images/comments-solid.svg);
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+#filter-serv::before {
+    content: url(/images/images/gears-solid.svg);
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+
 /* END OF FILTER BAR */
 
 /* BEGINING OF CARDS */
@@ -123,7 +155,7 @@ header button {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    overflow-y: scroll;
+
 }
 
 #section_services_list > p {
@@ -296,11 +328,3 @@ footer {
     font-size: 1.5rem;
     color: #D9D9D9;
 }
-
-/* footer {
-    background-color: black;
-    left : 0;
-    bottom: 0;
-    width: 100vw;
-    height: 30px;
-} */

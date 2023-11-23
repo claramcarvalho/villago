@@ -1,68 +1,124 @@
 
-// load website
-// javascript fetch from database
-// generate cards
-// display on client
-populateServices();
+function openForm() {
+    
+    const box = document.getElementById("loginFormDiv");
+    box.style.display = "block";
+
+}
+
+function closeForm() {
+    
+    const box = document.getElementById("loginFormDiv");
+    box.style.display = "none";
+
+}
+
+function activatePersonalTab() {
+    
+    const personal = document.getElementById("personalPage");
+    const serviceProvider = document.getElementById("serviceProviderPage");
+    const culturalPromoter = document.getElementById("culturalPromoterPage");
+
+    personal.style.display = "block";
+    serviceProvider.style.display = "none";
+    culturalPromoter.style.display = "none";
+}
+
+function activateServiceProviderTab() {
+    
+    const personal = document.getElementById("personalPage");
+    const serviceProvider = document.getElementById("serviceProviderPage");
+    const culturalPromoter = document.getElementById("culturalPromoterPage");
+    
+    personal.style.display = "none";
+    serviceProvider.style.display = "block";
+    culturalPromoter.style.display = "none";
+}
+
+function activateCulturalPromoterTab() {
+    
+    const personal = document.getElementById("personalPage");
+    const serviceProvider = document.getElementById("serviceProviderPage");
+    const culturalPromoter = document.getElementById("culturalPromoterPage");
+    
+    personal.style.display = "none";
+    serviceProvider.style.display = "none";
+    culturalPromoter.style.display = "block";
+}
+
+
 
 var objectXHR;
-
-function populateServices() {
-    console.log("Hello");
-
-	// 1 - create an XMLHttpRequest object
+function populateHomeDisplay() {
 	objectXHR = new XMLHttpRequest();
-		
-	// 2 - call the server and make a request
+	
 	objectXHR.open("get","src/loadAllServices.php",true);
 	objectXHR.send(null);
 		
-	// 3 - call to js function whenever the state changes
-	objectXHR.onreadystatechange = doPopulateServices;
+	objectXHR.onreadystatechange = doPopulateHomeDisplay;
 }
 
-function doPopulateServices() {
+function populateLanguages() {
+	objectXHR = new XMLHttpRequest();
+	
+    langName = document.getElementById("query").value;
+	objectXHR.open("get","src/filterByLanguage.php?query="+langName,true);
+	objectXHR.send(null);
+		
+	objectXHR.onreadystatechange = doPopulateHomeDisplay;
+}
+
+function populateServices() {
+	objectXHR = new XMLHttpRequest();
+	
+    servName = document.getElementById("query").value;
+	objectXHR.open("get","src/filterByService.php?query="+servName,true);
+	objectXHR.send(null);
+		
+	objectXHR.onreadystatechange = doPopulateHomeDisplay;
+}
+
+function doPopulateHomeDisplay() {
     if (objectXHR.readyState == 4 && objectXHR.status == 200) {
         
         // responseText = echo by php file
         result = objectXHR.responseText;
-
-        let arrayServices = generateArrayServices(result);
+        
+        let arrayHomeDisplay = generateArrayHomeDisplay(result);
         //console.log(arrayServices);
-        loadAllServices(arrayServices);
-
+        loadHomeDisplay(arrayHomeDisplay);
 
         // handle no results
         if (result.trim() == "empty") {
             alert("No Results Found!");
         }
-        
     }
-
 }
 
-
-function generateArrayServices(arrServices) {
-    let arrayServices = [];
-    let oneRow = arrServices.split("|");
+function generateArrayHomeDisplay(arrServEvents) {
+    let arr = [];
+    let oneRow = arrServEvents.split("|");
     oneRow.forEach(row => {
         let temp = row.split(",");
         if (temp.length == 3) {
-            arrayServices.push(temp); 
+            arr.push(temp); 
         }   
     });
-
-    return arrayServices;
+    return arr;
 }
 
-function loadAllServices(arr) {
+function loadHomeDisplay(arr) {
     const section_services_list = document.querySelector("#section_services_list");
-    //console.log(section_services_list);
     for (let i = 0; i < arr.length; i++) {
         //console.log("Execute");
         section_services_list.appendChild(createCard(arr[i]));
     }
 } 
+
+function reloadAllServices() {
+    const section_services_list = document.querySelector("#section_services_list");
+    section_services_list.innerHTML = '';
+}
 
 function createCard(oneRow) {
     const divCard = document.createElement("div");
@@ -101,3 +157,27 @@ function createCard(oneRow) {
 
     return divCard;
 }
+
+populateHomeDisplay();
+
+
+const filterLang = document.querySelector("#filter-lang");
+filterLang.addEventListener('click', () => {
+    reloadAllServices();
+    populateLanguages();
+});
+
+const filterServices = document.querySelector("#filter-serv");
+filterServices.addEventListener('click', () => {
+    reloadAllServices();
+    populateServices();
+});
+
+const queryBox = document.querySelector("#query");
+queryBox.addEventListener('input',() => {
+
+    if (queryBox.value === "") {
+        reloadAllServices();
+        populateHomeDisplay();
+    }
+})
