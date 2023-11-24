@@ -58,6 +58,16 @@ function populateHomeDisplay() {
 	objectXHR.onreadystatechange = doPopulateHomeDisplay;
 }
 
+function populateCountries() {
+	objectXHR = new XMLHttpRequest();
+	
+    countryName = document.getElementById("query").value;
+	objectXHR.open("get","src/filterByCountry.php?query="+countryName,true);
+	objectXHR.send(null);
+		
+	objectXHR.onreadystatechange = doPopulateHomeDisplay;
+}
+
 function populateLanguages() {
 	objectXHR = new XMLHttpRequest();
 	
@@ -160,6 +170,11 @@ function createCard(oneRow) {
 
 populateHomeDisplay();
 
+const filterCountries = document.querySelector("#filter-country");
+filterCountries.addEventListener('click', () => {
+    reloadAllServices();
+    populateCountries();
+});
 
 const filterLang = document.querySelector("#filter-lang");
 filterLang.addEventListener('click', () => {

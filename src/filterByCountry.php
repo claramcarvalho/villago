@@ -1,14 +1,14 @@
 <?php
 require_once 'dbconfig.php';
 
-$service = $_GET["query"];
+$country = $_GET["query"];
 
-$listProviderServices = array();
+$listEvents = array();
 
-function selectByServices(&$arr,$serv) {
+function selectByCountry(&$arr,$ctry) {
     global $connection;
 
-    $sqlStatement = "SELECT P.COMPANYNAME, S.DESCRIPTION, L.NAME FROM PROVIDERSERVICE PS JOIN PROVIDER P ON P.PROVIDERID = PS.PROVIDERID JOIN SERVICE S ON S.SERVICEID = PS.SERVICEID JOIN LANGUAGE L ON L.LANGUAGEID = PS.LANGUAGEID WHERE S.DESCRIPTION = '".$serv."'";
+    $sqlStatement = "SELECT E.NAME, C.NAME FROM EVENT E JOIN COUNTRY C ON E.COUNTRYID = C.COUNTRYID WHERE C.NAME = '".$ctry."'";
 
     $queryId = mysqli_query($connection, $sqlStatement);
     $count = mysqli_num_rows($queryId);
@@ -18,8 +18,8 @@ function selectByServices(&$arr,$serv) {
         while ($rec = mysqli_fetch_row ($queryId)) {
            
             $arr[$cpt]["title"] = $rec[0];
-            $arr[$cpt]["desc"] = $rec[1];
-            $arr[$cpt]["language"] = $rec[2]; 
+            $arr[$cpt]["desc"] = "Event";
+            $arr[$cpt]["language"] = $rec[1]; 
             
             $cpt++;
         }
@@ -39,8 +39,7 @@ function returnArray($arr) {
     } else {
         echo "empty";
     }
-
 }
 
-selectByServices($listProviderServices,$service);
-returnArray($listProviderServices);
+selectByCountry($listEvents,$country);
+returnArray($listEvents);

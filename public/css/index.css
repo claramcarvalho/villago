@@ -155,7 +155,25 @@ header button {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    overflow: scroll;
+    justify-content:flex-start;
+    
+}
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: none; 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: #8e8d8d; 
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #E60012; 
 }
 
 #section_services_list > p {

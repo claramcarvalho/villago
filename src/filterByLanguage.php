@@ -15,10 +15,12 @@ function selectByLanguage(&$arr,$lang) {
     
     if ($count > 0) {
         $cpt = 0;
-        while ($rec = mysqli_fetch_assoc($queryId)) {
-            $arr[$cpt]["company"] = $rec["COMPANYNAME"];
-            $arr[$cpt]["service"] = $rec["DESCRIPTION"];
-            $arr[$cpt]["language"] = $rec["NAME"]; 
+        while ($rec = mysqli_fetch_row ($queryId)) {
+           
+            $arr[$cpt]["title"] = $rec[0];
+            $arr[$cpt]["desc"] = $rec[1];
+            $arr[$cpt]["language"] = $rec[2]; 
+            
             $cpt++;
         }
     }
@@ -32,7 +34,7 @@ function returnArray($arr) {
 
     if ($cpt > 0){
         foreach($arr as $oneDim) {
-            echo $oneDim["company"].",".$oneDim["service"].",".$oneDim["language"]."|";
+            echo $oneDim["title"].",".$oneDim["desc"].",".$oneDim["language"]."|";
         }
     } else {
         echo "empty";
