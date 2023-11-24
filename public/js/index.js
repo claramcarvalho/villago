@@ -95,7 +95,6 @@ function doPopulateHomeDisplay() {
         result = objectXHR.responseText;
         
         let arrayHomeDisplay = generateArrayHomeDisplay(result);
-        //console.log(arrayServices);
         loadHomeDisplay(arrayHomeDisplay);
 
         // handle no results
@@ -133,14 +132,12 @@ function generateArrayHomeDisplay(arrServEvents) {
         }
     });
 
-    console.log(origArr);
     return uniqueArr.filter((element) => element != null);
 }
 
 function loadHomeDisplay(arr) {
     const section_services_list = document.querySelector("#section_services_list");
     for (let i = 0; i < arr.length; i++) {
-        //console.log("Execute");
         section_services_list.appendChild(createCard(arr[i]));
     }
 } 
