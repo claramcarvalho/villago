@@ -160,19 +160,19 @@ header button {
     
 }
 
-::-webkit-scrollbar {
+#section_services_list::-webkit-scrollbar {
     width: 10px;
 }
   
-::-webkit-scrollbar-track {
+#section_services_list::-webkit-scrollbar-track {
     background: none; 
 }
    
-::-webkit-scrollbar-thumb {
+#section_services_list::-webkit-scrollbar-thumb {
     background: #8e8d8d; 
 }
   
-::-webkit-scrollbar-thumb:hover {
+#section_services_list::-webkit-scrollbar-thumb:hover {
     background: #E60012; 
 }
 
@@ -217,6 +217,26 @@ header button {
     padding: 3px;
     font-size: 1.2rem;
     border-radius: 5px;
+}
+
+.service-tags {
+    overflow-x: scroll;
+}
+
+.service-tags::-webkit-scrollbar {
+    height: 3px;
+}
+  
+.service-tags::-webkit-scrollbar-track {
+    background: none; 
+}
+   
+.service-tags::-webkit-scrollbar-thumb {
+    background: none; 
+}
+
+.service-tags::-webkit-scrollbar-thumb:hover {
+    background: #c27a7a; 
 }
 
 

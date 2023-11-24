@@ -107,14 +107,34 @@ function doPopulateHomeDisplay() {
 
 function generateArrayHomeDisplay(arrServEvents) {
     let arr = [];
+
     let oneRow = arrServEvents.split("|");
     oneRow.forEach(row => {
         let temp = row.split(",");
         if (temp.length == 3) {
-            arr.push(temp); 
+            arr.push(temp);
         }   
     });
-    return arr;
+
+    uniqueArr = [...arr];
+    arr.forEach(element => {
+        const found = arr.find((elem) => elem[0] == element[0]);
+
+        if (element[1] != found[1]) {
+            found.push(element[1]);
+            let index = arr.indexOf(element);
+            uniqueArr[index] = null;
+        }
+
+        if (element[2] != found[2]) {            
+            found.push(element[2]);
+            let index = arr.indexOf(element);
+            uniqueArr[index] = null;
+        }
+    });
+
+    console.log(origArr);
+    return uniqueArr.filter((element) => element != null);
 }
 
 function loadHomeDisplay(arr) {
@@ -131,6 +151,8 @@ function reloadAllServices() {
 }
 
 function createCard(oneRow) {
+
+    //console.log(oneRow);
     const divCard = document.createElement("div");
     divCard.className = "serviceCard";
 
@@ -148,16 +170,12 @@ function createCard(oneRow) {
     const divTags = document.createElement("div");
     divTags.className = "service-tags";
 
-    const pService = document.createElement("p");
-    const txtPService = document.createTextNode(oneRow[1]);
-    pService.appendChild(txtPService);
-
-    const pLang = document.createElement("p");
-    const txtPLang = document.createTextNode(oneRow[2]);
-    pLang.appendChild(txtPLang);
-
-    divTags.appendChild(pService);
-    divTags.appendChild(pLang);
+    for (let i = 1; i < oneRow.length; i++) {
+        const p = document.createElement("p");
+        const txtP = document.createTextNode(oneRow[i]);
+        p.appendChild(txtP);
+        divTags.appendChild(p);
+    }
 
     divDetails.appendChild(h2);
     divDetails.appendChild(divTags);
