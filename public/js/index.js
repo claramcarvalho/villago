@@ -1,3 +1,13 @@
+var loggedIn = false;
+console.log("Heelo!");
+console.log(loggedIn);
+
+function openMenu()
+{
+    var windowsFeatures = "popup,width=350,height=650";
+    window.open("loginSignUp.php","test",windowsFeatures);
+}
+
 
 function openForm() {
     

@@ -1,7 +1,7 @@
 <?php
 
 require_once 'dbconfig.php';
-header('Content-type: application/json'); //header for json
+//header('Content-type: application/json'); //header for json
 
 $sqlStmtEntities = "SELECT * FROM services_and_events";
 
@@ -37,7 +37,3 @@ $countEntities = mysqli_num_rows($queryEntitiesForMaps);
     }
     else
         echo "No entities were found!";
-
-//$EntitiesJSON = json_encode($queryEntitiesForMaps);
-
-//echo "This is the file: $EntitiesJSON";
