@@ -1,10 +1,17 @@
 .registrationFormBody {
     display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
+.sectionForms{
+    display: flex;
     flex-direction: column;
 }
+
 .serviceFinderRegistrationFormDiv {
     position: relative;
-    z-index: -1;
     height: max-content;
     display: flex;
     text-align: center;
@@ -28,18 +35,21 @@
     width: 50vw;
     padding: 20px 0;
 }
-label{
+
+.sectionForms label{
     font-size: 20px;
     padding: 10px 0px;
     text-shadow: 2px 2px hsl(0,0%,85%);
 }
-input{
+
+.sectionForms input{
     background-color: hsl(0,0%,80%);
     box-shadow: 2px 2px hsl(0,0%,60%);
     border: 2px solid hsl(0,0%,70%);
     border-radius: 20px;
     padding: 10px;
 }
+
 #submitServiceFinder{
     margin: 10px 0px;
     padding: 20px;
@@ -54,7 +64,7 @@ input{
     box-sizing: border-box;
 }
 
-img {
+.sectionForms img {
     box-sizing: border-box;
     position: absolute;
     align-self: center;
@@ -67,7 +77,6 @@ img {
 
 .serviceProviderRegistrationFormDiv {
     position: relative;
-    z-index: -1;
     height: max-content;
     display: flex;
     text-align: center;
@@ -109,7 +118,6 @@ img {
 
 .culturalPromoterRegistrationFormDiv {
     position: relative;
-    z-index: -1;
     height: max-content;
     display: flex;
     text-align: center;
@@ -147,11 +155,10 @@ img {
     box-sizing: border-box;
 }
 
-/* CULTURAL PROMOTER */
+/* NEW EVENT */
 
 .addNewEventRegistrationFormDiv {
     position: relative;
-    z-index: -1;
     height: max-content;
     display: flex;
     text-align: center;
@@ -175,7 +182,7 @@ img {
     width: 50vw;
     padding: 20px 0;
 }
-#submitAddNewEvent{
+#submitAddNewEvent, #verifyProviderAddress, #verifyEventAddress{
     margin: 10px 0px;
     padding: 20px;
     border-radius: 20px;
@@ -188,7 +195,6 @@ img {
     align-self: center;
     box-sizing: border-box;
 }
-
 
 /* Add another role div */
 .addNewRoleDiv {
@@ -229,3 +235,110 @@ img {
 #chooseServiceProvider, #chooseCulturalPromoter {
     box-shadow: none;
 }
+
+/* BEGINING OF MAP */
+
+.sectionMap {
+    height: 250px;
+    width: 250px;
+}
+
+#mapGoogle {
+    height: 100%;
+    width: 100%;
+}
+
+/* END OF MAP*/
+
+/* BEGINING OF LOGIN FORM */
+#loginFormDiv{
+    display: block;
+    position: fixed;
+    background-color: white;
+    left: 40%;
+    z-index: 20;
+    border: 2px solid red;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px rgb(54, 52, 52);
+}
+
+.closeItDiv{
+    width: 100%;
+    box-sizing: border-box;
+}
+#closeIt {
+    float: right;
+    box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
+    margin: 5px;
+    border-radius: 50%;
+    border: none;
+    background-color: red;
+    color: white;
+}
+
+.login-form{
+    padding: 10px;
+    width: 300px;
+}
+
+.labelForm{
+    display: inline-flex;
+    font-weight: bold;
+}
+
+.imgLogin{
+    display: block;
+    margin: 10%;
+    width: 80%;
+}
+
+.theForm{
+    padding:10px;
+}
+
+.login-box {
+    background-color: lightgray;
+    box-sizing: border-box;
+    display: block;
+    outline: none;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.login-btn {
+    display: block;
+    box-sizing: border-box;
+    background-color: red;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: auto;
+    margin-bottom: 20px;;
+    width: fit-content;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.textQuestion {
+    display: block;
+    font-size: 10px;
+    width: 100%;
+    margin-top: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+.createAnAccount {
+    display: block;
+    font-size: 10px;
+    width: 100%;
+    margin-top: 20px;
+    margin: auto;
+    text-align: center;
+}
+/* END OF LOGIN FORM */
