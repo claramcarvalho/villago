@@ -25,9 +25,6 @@
           <button type="submit" id="filter-serv" class = "seachBarIcon">Services</button>
           <input type="text" id="query" name="query" placeholder="Search for...">
         </div>
-        <div class = "smallSearchBar">
-          <button type="button" id="" class = "">H</button>
-        </div>
     </div>
     <section id="section_all_services">
       <section id="section_services_list">
