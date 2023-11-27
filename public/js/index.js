@@ -125,24 +125,31 @@ function generateArrayHomeDisplay(arrServEvents) {
         }   
     });
 
-    uniqueArr = [...arr];
+    newArr = [...arr];
     arr.forEach(element => {
         const found = arr.find((elem) => elem[0] == element[0]);
 
         if (element[1] != found[1]) {
             found.push(element[1]);
             let index = arr.indexOf(element);
-            uniqueArr[index] = null;
+            newArr[index] = null;
         }
 
         if (element[2] != found[2]) {            
             found.push(element[2]);
             let index = arr.indexOf(element);
-            uniqueArr[index] = null;
+            newArr[index] = null;
         }
     });
 
-    return uniqueArr.filter((element) => element != null);
+    let cards = [];
+    newArr.forEach(tagsArr => {
+        tagsArr =  tagsArr?.filter((tag,index) => tagsArr.indexOf(tag) === index);
+        cards.push(tagsArr);
+    });
+
+    console.log(cards);
+    return cards.filter((element) => element != null);
 }
 
 function loadHomeDisplay(arr) {
