@@ -1,0 +1,28 @@
+!SESSION 2023-11-29 10:53:32.123 -----------------------------------------------
+eclipse.buildId=4.28.0.20230608-1200
+java.version=17.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.php.product -product org.eclipse.epp.package.php.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.php.product -data C:\xampp\htdocs\villago -product org.eclipse.epp.package.php.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-11-29 10:53:37.533
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\clara'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-11-29 10:54:41.752 -----------------------------------------------
+eclipse.buildId=4.28.0.20230608-1200
+java.version=17.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.php.product -product org.eclipse.epp.package.php.product -product org.eclipse.epp.package.php.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.php.product -product org.eclipse.epp.package.php.product -data C:\xampp\htdocs\villago -product org.eclipse.epp.package.php.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-11-29 10:54:45.976
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\clara'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

@@ -22,7 +22,7 @@ else
     {
         echo "<script>alert('Login Successful')</script>";
         echo "<script>var loggedIn = true;</script>";
-        echo "<script>window.close();</script>";
+        //echo "<script>window.close();</script>";
     }
     else
     {
