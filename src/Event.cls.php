@@ -8,6 +8,7 @@ class Event {
     private $eventDate;
     private $countryId;
     private $size;
+    private $listEventCards = [];
     
     function __construct ($eId = null, $eN = null, $eA = null, $lat = null, $lng = null, $eD = null, $ctrId = null, $s = null)
     {
@@ -149,6 +150,18 @@ class Event {
         $this->size = $size;
     }
 
+    public static function returnArray($arr) {
+        $cpt = count($arr);
+    
+        if ($cpt > 0){
+            foreach($arr as $oneDim) {
+                echo $oneDim["title"].",".$oneDim["desc"].",".$oneDim["language"]."|";
+            }
+        } else {
+            echo "empty";
+        }
+    }
+
     public static function getAllEvents($connection)
     {
         $counter = 0;
@@ -172,6 +185,43 @@ class Event {
             $listOFevents[$counter++] = $event;
         }
         return serialize($listOFevents);
+    }
+
+    public static function generateEventCards($connection) {
+        
+        $cpt = 0;
+        $query = "SELECT E.NAME, C.NAME FROM EVENT E JOIN COUNTRY C ON E.COUNTRYID = C.COUNTRYID";
+    
+        foreach ($connection->query($query) as $oneRow) {
+            $listEventCards[$cpt]["title"] = $oneRow[0];
+            $listEventCards[$cpt]["desc"] = "Event";
+            $listEventCards[$cpt]["language"] = $oneRow[1]; 
+
+            $cpt++;            
+        }      
+        return serialize($listEventCards);
+    }
+
+    
+    public static function selectByCountry($connection,$ctry) {
+    
+        $cpt = 0;
+        $sqlStatement = "SELECT E.NAME, C.NAME FROM EVENT E JOIN COUNTRY C ON E.COUNTRYID = C.COUNTRYID WHERE C.NAME = :ctry";
+
+        $prepare = $connection->prepare($sqlStatement);
+        $prepare->bindValue(":ctry",$ctry);
+        $prepare->execute();
+        $result = $prepare->fetchAll();
+
+        foreach ($result as $oneRow) {
+            $listEventCards[$cpt]["title"] = $oneRow[0];
+            $listEventCards[$cpt]["desc"] = "Event";
+            $listEventCards[$cpt]["language"] = $oneRow[1]; 
+
+            $cpt++;            
+        }      
+
+        return serialize($listEventCards);
     }
 }
 
