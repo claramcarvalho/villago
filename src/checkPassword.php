@@ -61,8 +61,8 @@ else
         echo "</div>";
         echo "</div>";
         echo "<script>alert(window.opener.location.href)</script>";
-
         echo "<script>window.opener.location.href = window.opener.location.href;setTimeout('window.close()',1000);</script>";
+
     }
     else
     {

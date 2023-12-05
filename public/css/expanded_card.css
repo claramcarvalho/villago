@@ -3,8 +3,6 @@
     border-radius: 20px;
     padding: 0px;
     box-sizing: border-box;
-    width: 50vw;
-    margin: 30px;
 }
 .expandedCardImage img{
     width: 100%;
@@ -93,9 +91,7 @@
 .loginSignUp:hover {
     background-color: rgb(84, 168, 196);
 }
-#expandedCardAfterLogin{
-    display: none;
-}
+
 .howToContactMe {
     padding-left: 20px;
     margin-bottom: 10px;

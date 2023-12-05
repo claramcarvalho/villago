@@ -189,7 +189,17 @@ function contentServices(oneService) {
 }
 
 function contentEvents(oneEvent) {
-    return "<div style = 'width:200px;min-height:40px'>" + oneEvent.name + "</div>"
+    return "<div style = 'width:200px;min-height:40px'>"+
+                "<div class='serviceCard' style = 'width:200px'>" +
+                    "<div class='service-img'>" +
+                    "</div>" +
+                    "<div class='service-details'>" +
+                        "<h2 class='service-title'>"+
+                            oneEvent.name +
+                        "</h2>"+
+                    "</div>" +
+                "</div>" +
+            "</div>";
 }
 
 function contentDefault(oneEntity) {

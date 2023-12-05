@@ -110,6 +110,7 @@ function doPopulateHomeDisplay() {
         result = objectXHR.responseText;
         
         let arrayHomeDisplay = generateArrayHomeDisplay(result);
+        console.log("arrayHomeDisplay",arrayHomeDisplay);
         loadHomeDisplay(arrayHomeDisplay);
 
         // handle no results
@@ -202,7 +203,26 @@ function createCard(oneRow) {
     divCard.appendChild(divImg);
     divCard.appendChild(divDetails);
 
+    divCard.addEventListener('click',() => {
+        openDetails(oneRow);
+    })
+
     return divCard;
+}
+
+
+function openDetails(oneRow) {
+    //var arrTags = [];
+    var tagsString = "";
+    var service_title = oneRow[0];
+    for (let i = 1; i < oneRow.length; i++) {
+        //arrTags.push(oneRow[i]);
+        tagsString += oneRow[i] + ",";
+    }
+
+    var windowsFeatures = "popup";
+    //var index = window.location.href
+    window.open("expanded_card.php?title=" + service_title + "&tags=" + tagsString,"test",windowsFeatures);
 }
 
 populateHomeDisplay();
