@@ -41,7 +41,12 @@ catch (PDOException $e) {
  $count = mysqli_num_rows($queryCheckPassword);
 if ($count == 0)
 {
-    echo "<script>alert('user not found')</script>";
+    echo "<div style='display:flex;justify-content:center;align-items:center;width:100%;height:100%';>";
+    echo "<div style='display:flex;flex-direction:column;text-align:center;color:red;height:auto;'>";
+    echo "<h3>User not found</h3>";
+    echo "</div>";
+    echo "</div>";
+    echo "<script>location = '../loginSignUp.php';</script>";
 }
 else
 {
@@ -49,7 +54,6 @@ else
     $correctPassword = $row[0];
     if ($correctPassword == $password)
     {
-        //echo "<script>alert('Login Successful. Welcome : ".$_SESSION["NAME"]."');window.opener.location.href = window.opener.location.href;setTimeout(window.close(),3000);</script>";
         echo "<div style='display:flex;justify-content:center;align-items:center;width:100%;height:100%';>";
         echo "<div style='display:flex;flex-direction:column;text-align:center;color:red;height:auto;'>";
         echo "<h3>Welcome to Villago</h3>";
@@ -57,12 +61,15 @@ else
         echo "</div>";
         echo "</div>";
         echo "<script>window.opener.location.href = window.opener.location.href;setTimeout('window.close()',1000);</script>";
-//        echo "<script>var loggedIn = true; window.close();</script>";
-        //echo "<script>window.close();</script>";
     }
     else
     {
-        echo "<script>alert('Wrong Password'); location = '../index.php';</script>";
+        echo "<div style='display:flex;justify-content:center;align-items:center;width:100%;height:100%';>";
+        echo "<div style='display:flex;flex-direction:column;text-align:center;color:red;height:auto;'>";
+        echo "<h3>Wrong Password</h3>";
+        echo "<a href='../loginSignUp.php' style='color:red'><h3>Back to login</h3></a>";
+        echo "</div>";
+        echo "</div>";
     }
 }
 
