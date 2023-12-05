@@ -4,4 +4,4 @@ $user="root";
 $pass="";
 $dbname="dbvillago";
 
-//$connection = mysqli_connect($host,$user,$pass,$dbname);
+$connection = mysqli_connect($host,$user,$pass,$dbname);

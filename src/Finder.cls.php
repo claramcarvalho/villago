@@ -130,5 +130,37 @@ class Finder {
     {
         $this->promoterId = $promoterId;
     }
+
+
+    public function getFinderByEmail($connection){
+        $email=$this->email;
+        $sqlStmt="select * from finder where Email=:email";
+        
+        $prepare=$connection->prepare($sqlStmt);
+        $prepare->bindvalue(":email",$email);
+        $prepare->execute();
+        
+        $result=$prepare->fetchAll();
+        
+        $tObj="";
+        
+        if (sizeOf($result)>0){
+            
+            $tObj = new Finder();
+            
+            foreach ($result as $oneRec){
+                
+                $tObj->finderId=$oneRec["FinderId"];
+                $tObj->name=$oneRec["Name"];
+                $tObj->phone=$oneRec["Phone"];
+                $tObj->email=$oneRec["Email"];
+                $tObj->password=$oneRec["Password"];
+                $tObj->providerId=$oneRec["PromoterId"];
+                $tObj->promoterId=$oneRec["ProviderId"];
+
+            }
+        }
+        return serialize($tObj);
+    }
 }
 

@@ -1,0 +1,33 @@
+.logoutSection{
+    width: 100%;
+    height: 100%;
+    border: 2px solid red;
+    border-radius: 20px;
+}
+#image-logout{
+    box-sizing: border-box;
+}
+.imgLogout{
+    display: block;
+    margin: auto;
+    box-sizing: border-box;
+    margin: 10%;
+    width: 80%;
+}
+#logout-button-div{
+    text-align: center;
+    padding-bottom: 20px;
+}
+#button-logout {
+    display: block;
+    box-sizing: border-box;
+    background-color: red;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: auto;
+    margin-bottom: 20px;;
+    width: fit-content;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
