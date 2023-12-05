@@ -12,8 +12,7 @@ html {
 button:hover {
     cursor: pointer;
     background-color: white;
-    border-radius: 5px;
-    border: 2px solid black;
+    color: red;
 }
 
 body {
