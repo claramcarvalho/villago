@@ -10,7 +10,7 @@
 <body class="registrationFormBody"> 
     <section class="sectionForms">
 
-        <div id="loginFormDiv" style="display: none">
+        <!-- <div id="loginFormDiv" style="display: block">
             <div class="closeItDiv">
                 <button id="closeIt" onclick="closeForm()">&times;</button>
             </div>
@@ -28,9 +28,9 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div id="settingsFormDiv" style="display: none">
+        <!-- <div id="settingsFormDiv" style="display: block">
             <div class="closeItDiv">
                 <button id="closeIt" onclick="closeForm()">&times;</button>
             </div>
@@ -50,9 +50,9 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="serviceFinderRegistrationFormDiv" id = "newFinderFormDiv" style="display: none">
+        <div class="serviceFinderRegistrationFormDiv" id = "newFinderFormDiv" style="display: block">
             <div class="serviceFinderRegistrationFormHeader">Service Finder Registration</div>
             <form class="serviceFinderRegistrationForm" id="registrationForm">
                 <label for="fullName">Name:</label>
@@ -70,7 +70,7 @@
             <img src="./images/logo/villago-transparent-bg.png">
         </div>
 
-        <div class="serviceProviderRegistrationFormDiv" id = "newProviderFormDiv" style="display: none"> 
+        <div class="serviceProviderRegistrationFormDiv" id = "newProviderFormDiv" style="display: block"> 
             <div class="serviceProviderRegistrationFormHeader">Service Provider Registration</div>
             <form class="serviceProviderRegistrationForm">
                 <label for="companyName">Company name:</label>
@@ -91,7 +91,7 @@
             <img src="./images/logo/villago-transparent-bg.png">
         </div>
 
-        <div class="culturalPromoterRegistrationFormDiv" id = "newPromoterFormDiv" style="display: none">
+        <div class="culturalPromoterRegistrationFormDiv" id = "newPromoterFormDiv" style="display: block">
             <div class="culturalPromoterRegistrationFormHeader">Cultural Promoter Registration</div>
             <form class="culturalPromoterRegistrationForm">
                 <label for="culturalCompanyName">Company name:</label>
@@ -101,7 +101,7 @@
             <img src="./images/logo/villago-transparent-bg.png">
         </div>
 
-        <div class="addNewEventRegistrationFormDiv" id="newEventFormDiv" style="display: none">
+        <div class="addNewEventRegistrationFormDiv" id="newEventFormDiv" style="display: block">
             <div class="addNewEventRegistrationFormHeader">Add new event</div>
             <form class="addNewEventRegistrationForm">
                 <label for="eventName">Event name:</label>
@@ -124,7 +124,7 @@
             <img src="./images/logo/villago-transparent-bg.png">
         </div>
 
-        <div class="addNewRoleDiv" id="newRoleFormDiv" style="display: none">
+        <div class="addNewRoleDiv" id="newRoleFormDiv" style="display: block">
             
             <span class="chooseRoleQuestionTitle">Do you want to choose another role?</span>
             <div class="chooseRoleQuestionDiv">

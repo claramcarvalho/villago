@@ -5,6 +5,7 @@ class Provider {
     private $companyName;
     private $lat;
     private $lng;
+    private $listServiceCards = [];
 
     function __construct ($prvId = null, $ad = null, $cN = null, $lat = null, $lng = null)
     {
@@ -95,6 +96,18 @@ class Provider {
         $this->lng = $lng;
     }
 
+    public static function returnArray($arr) {
+        $cpt = count($arr);
+    
+        if ($cpt > 0){
+            foreach($arr as $oneDim) {
+                echo $oneDim["title"].",".$oneDim["desc"].",".$oneDim["language"]."|";
+            }
+        } else {
+            echo "empty";
+        }
+    }
+
     public static function getAllProviders($connection)
     {
         $counter = 0;
@@ -148,5 +161,65 @@ class Provider {
             return serialize($listOfServices);
         }
     }
+  
+    public static function generateServiceCards($connection) {
+
+        $cpt = 0;
+        $query = "SELECT P.COMPANYNAME, S.DESCRIPTION, L.NAME FROM PROVIDERSERVICE PS JOIN PROVIDER P ON P.PROVIDERID = PS.PROVIDERID JOIN SERVICE S ON S.SERVICEID = PS.SERVICEID JOIN LANGUAGE L ON L.LANGUAGEID = PS.LANGUAGEID";
+        
+        foreach ($connection->query($query) as $oneRow) {
+            $listServiceCards[$cpt]["title"] = $oneRow["COMPANYNAME"];
+            $listServiceCards[$cpt]["desc"] = $oneRow["DESCRIPTION"];
+            $listServiceCards[$cpt]["language"] = $oneRow["NAME"]; 
+
+            $cpt++;            
+        }      
+        return serialize($listServiceCards);
+    }
+
+
+
+    public static function selectByService($connection,$serv) {
+    
+        $cpt = 0;
+        $sqlStatement = "SELECT P.COMPANYNAME, S.DESCRIPTION, L.NAME FROM PROVIDERSERVICE PS JOIN PROVIDER P ON P.PROVIDERID = PS.PROVIDERID JOIN SERVICE S ON S.SERVICEID = PS.SERVICEID JOIN LANGUAGE L ON L.LANGUAGEID = PS.LANGUAGEID WHERE S.DESCRIPTION = :serv";
+        
+        $prepare = $connection->prepare($sqlStatement);
+        $prepare->bindValue(":serv",$serv);
+        $prepare->execute();
+        $result = $prepare->fetchAll();
+
+        foreach ($result as $oneRow) {
+            $listServiceCards[$cpt]["title"] = $oneRow["COMPANYNAME"];
+            $listServiceCards[$cpt]["desc"] = $oneRow["DESCRIPTION"];
+            $listServiceCards[$cpt]["language"] = $oneRow["NAME"]; 
+
+            $cpt++;            
+        }      
+
+        return serialize($listServiceCards);
+    }
+
+    public static function selectByLanguage($connection,$lang) {
+    
+        $cpt = 0;
+        $sqlStatement = "SELECT P.COMPANYNAME, S.DESCRIPTION, L.NAME FROM PROVIDERSERVICE PS JOIN PROVIDER P ON P.PROVIDERID = PS.PROVIDERID JOIN SERVICE S ON S.SERVICEID = PS.SERVICEID JOIN LANGUAGE L ON L.LANGUAGEID = PS.LANGUAGEID WHERE L.NAME = :lang";
+        
+        $prepare = $connection->prepare($sqlStatement);
+        $prepare->bindValue(":lang",$lang);
+        $prepare->execute();
+        $result = $prepare->fetchAll();
+
+        foreach ($result as $oneRow) {
+            $listServiceCards[$cpt]["title"] = $oneRow["COMPANYNAME"];
+            $listServiceCards[$cpt]["desc"] = $oneRow["DESCRIPTION"];
+            $listServiceCards[$cpt]["language"] = $oneRow["NAME"]; 
+
+            $cpt++;            
+        }      
+
+        return serialize($listServiceCards);
+    }
+    
 }
 

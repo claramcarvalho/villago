@@ -11,11 +11,22 @@
   </head>
 
   <body>
-    
     <header class="header">
       <img src="images\logo\logo_black_no_slogan.png" alt="Logo Site Villago, white sans serif font, red o with a white roof on top of the o. On top of the chimney on the roof stands a red heart." max-height="80px"/>
       <!-- Condition to display the correct button in case user is logged in or not. Logic on login.php file -->
-      <button onclick="openMenu()">Login / SignUp</button>
+      <?php 
+        session_start();
+
+        if(!isset($_SESSION["FINDERID"]))
+        {
+          echo "<button onclick='openMenu()'>Login / Sign Up</button>";
+        }
+        else
+        {
+          echo "<h2 style='color:white;'>Welcome ".$_SESSION["NAME"]."</h2>";
+          echo "<button onclick='openSignOut()'>Sign Out</button>";
+        }
+      ?>
     </header>
 
     <div class = "filterBar">
