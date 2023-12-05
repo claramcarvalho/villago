@@ -70,6 +70,7 @@ else
         echo "<a href='../loginSignUp.php' style='color:red'><h3>Back to login</h3></a>";
         echo "</div>";
         echo "</div>";
+        session_destroy();
     }
 }
 
