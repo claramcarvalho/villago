@@ -21,8 +21,9 @@ async function getJson(){
         };
     }
 
+    //bringing Services
     sendXHR("GET", 
-            "src/loadMapsServicesEvents.php", 
+            "src/loadMapsServices.php", 
             null, 
             function(response) {
                 var arrayToSaveInLocalStorage = JSON.parse(response);
@@ -40,9 +41,75 @@ async function getJson(){
                     });
                 }
                 // SAVING IN LOCAL STORAGE FOR USE WHEN LOADING MAP
-                localStorage.setItem('allEntities', JSON.stringify(objToSaveLocalStorage,null,2));
+                localStorage.setItem('allServices', JSON.stringify(objToSaveLocalStorage,null,2));
             }
     )
+
+    //bringing Events
+    sendXHR("GET", 
+            "src/loadMapsEvents.php", 
+            null, 
+            function(response) {
+                var arrayToSaveInLocalStorage = JSON.parse(response);
+
+                var objToSaveLocalStorage = { entity: [] }
+                for (var i in arrayToSaveInLocalStorage)
+                {
+                    var oneEntity = arrayToSaveInLocalStorage[i];
+
+                    objToSaveLocalStorage.entity.push({
+                        "id" : oneEntity.id,
+                        "name" : oneEntity.name,
+                        "lat" : oneEntity.lat,
+                        "lgn" : oneEntity.lgn
+                    });
+                }
+                // SAVING IN LOCAL STORAGE FOR USE WHEN LOADING MAP
+                localStorage.setItem('allEvents', JSON.stringify(objToSaveLocalStorage,null,2));
+            }
+    )
+}
+
+function pinMarkers(listOfEntities, markerIcon, type) {
+    
+    for (const oneEntity of listOfEntities.entity) {        
+        var entLatLng = new google.maps.LatLng(oneEntity.lat,oneEntity.lgn);
+        var oneMarker = new google.maps.Marker({
+            position: entLatLng, 
+            map: map, 
+            title:oneEntity.name,
+            icon: markerIcon
+        });
+
+        const posMarker = 
+            {
+                lat: oneEntity.lat,
+                lng: oneEntity.lgn,
+            };
+        
+        let content = "";
+        if (type == "pr") {
+            content = contentServices(oneEntity);
+        }
+        else if (type == "ev"){
+            content = contentEvents(oneEntity);
+        }
+        else {
+            content = contentEvents(oneEntity);
+        }
+
+        (function (oneMarker, oneEntity) {
+            google.maps.event.addListener(
+                oneMarker, 
+                "click", 
+                function (e) {
+                    infoWindow.setContent(content);
+                    infoWindow.open(map, oneMarker);
+                    map.setCenter(posMarker);
+                }
+            );
+        })(oneMarker, oneEntity);
+    }
 }
 
 async function initMap() {
@@ -55,46 +122,18 @@ async function initMap() {
     });
 
     //going through the JSON that was saved in local storage (from PHP, function getJson())
+    //creating markers
     //////////REF.:
     ////////// https://www.aspsnippets.com/Articles/1131/Google-Maps-API-V3-Load-Add-markers-to-Google-Map-using-JSON-and-JavaScript/
-    var listOfEntities = JSON.parse(localStorage.getItem('allEntities'));  /////// OBJECT
-    for (const oneEntity of listOfEntities.entity)
-    {
-        var markerIcon;
-        var entityType = (oneEntity.id).slice(0,2);
-        if (entityType == "EV") {
-            markerIcon = 'images/icon/event.png';
-        }
-        else if (entityType == "PR") {
-            markerIcon = 'images/icon/service.png';
-        }
-        else{
-            markerIcon = 'images/icon/default.png';
-        }
-        
-        var entLatLng = new google.maps.LatLng(oneEntity.lat,oneEntity.lgn);
-        var oneMarker = new google.maps.Marker({
-            position: entLatLng, 
-            map: map, 
-            title:oneEntity.name,
-            icon: markerIcon
-        });
+    var listOfProviders = JSON.parse(localStorage.getItem('allServices'));  /////// OBJECT
+    var markerIconProvider = 'images/icon/service.png';   /// MARKER
 
-        const posMarker = 
-                {
-                    lat: oneEntity.lat,
-                    lng: oneEntity.lgn,
-                };
+    pinMarkers(listOfProviders,markerIconProvider,"pr");
 
-        (function (oneMarker, oneEntity) {
-            google.maps.event.addListener(oneMarker, "click", function (e) {
-                infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + oneEntity.name + "</div>");
-                infoWindow.open(map, oneMarker);
-                map.setCenter(posMarker);
-            });
-        })(oneMarker, oneEntity);
-        //latlngbounds.extend(marker.position);
-    }
+    var listOfEvents = JSON.parse(localStorage.getItem('allEvents'));  /////// OBJECT
+    var markerIconEvent = 'images/icon/event.png';   /// MARKER
+
+    pinMarkers(listOfEvents,markerIconEvent,"ev");
 
     infoWindow = new google.maps.InfoWindow();
 
@@ -133,6 +172,28 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos)
         : "Error: Your browser doesn't support geolocation.",
     );
     infoWindow.open(map);
+}
+
+function contentServices(oneService) {
+    return "<div style = 'width:200px;min-height:40px'>"+
+                "<div class='serviceCard' style = 'width:200px'>" +
+                    "<div class='service-img'>" +
+                    "</div>" +
+                    "<div class='service-details'>" +
+                        "<h2 class='service-title'>"+
+                            oneService.name
+                        "</h2>"+
+                    "</div>" +
+                "</div>" +
+            "</div>";
+}
+
+function contentEvents(oneEvent) {
+    return "<div style = 'width:200px;min-height:40px'>" + oneEvent.name + "</div>"
+}
+
+function contentDefault(oneEntity) {
+    return "<div style = 'width:200px;min-height:40px'>" + oneEntity.name + "</div>"
 }
 
 getJson();
