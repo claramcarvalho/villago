@@ -17,12 +17,15 @@
       <?php 
         session_start();
 
-        
-        
         if(!isset($_SESSION["FINDERID"]))
+        {
           echo "<button onclick='openMenu()'>Login / Sign Up</button>";
+        }
         else
+        {
+          echo "<h2 style='color:white;'>Welcome ".$_SESSION["NAME"]."</h2>";
           echo "<button onclick='openSignOut()'>Sign Out</button>";
+        }
       ?>
     </header>
 

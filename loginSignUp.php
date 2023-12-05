@@ -22,7 +22,7 @@
                         <input type="password" name="password" class="login-box"/><br></br>
                         <input type="submit" value="LOGIN" class="login-btn" formaction="src\checkPassword.php"/>
                         <p class="textQuestion">Doesn't have an account yet?</p>
-                        <a class="createAnAccount" href="">Create an account</a>
+                        <a class="createAnAccount" href="registration.php">Create an account</a>
                     </form>
                 </div>
             </div>

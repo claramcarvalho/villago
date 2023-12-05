@@ -5,6 +5,7 @@ console.log(loggedIn);
 function openMenu()
 {
     var windowsFeatures = "popup,width=350,height=650";
+    var index = window.location.href    
     window.open("loginSignUp.php","test",windowsFeatures);
 }
 function openSignOut()
