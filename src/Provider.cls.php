@@ -108,37 +108,6 @@ class Provider {
         }
     }
 
-    public function getServiceByProviderId ($connection)
-    {
-        $id = $this->providerId;
-        $sqlStmt = "SELECT *
-                        FROM providerservice j
-                        LEFT JOIN service s ON (j.ServiceId = s.ServiceId)
-                        LEFT JOIN language l ON (j.LanguageId = l.LanguageId)
-                        WHERE j.ProviderId = :id";
-
-        $prepare = $connection->prepare($sqlStmt);
-        $prepare->bindValue(":id",$id);
-        $prepare->execute();
-        $result = $prepare->fetchAll();
-        $courseObj = "";
-
-        if (sizeof($result)>0)
-        {
-            $counter = 0;
-            foreach ($result as $oneLine)
-            {
-                $oneService = array();
-
-                $oneService["ServiceDescription"] = $oneLine["Description"];
-                $oneService["ServiceLanguage"] = $oneLine["Name"];                
-
-                $listOfServices[$counter++]=$oneService;
-            }
-            return serialize($listOfServices);
-        }
-    }
-
     public static function getAllProviders($connection)
     {
         $counter = 0;
