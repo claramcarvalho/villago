@@ -7,7 +7,7 @@ After all, it takes a village to connect the world.
 ### 🛒 Features
 
 1. Geolocation for service providers and events
-2. Multi-criteria searching tool
+2. Searching tool
 3. User management
 
 ### 🛠️ Implementation
