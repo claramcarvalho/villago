@@ -34,9 +34,9 @@ async function initMap() {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
                 };
-                infoWindow.setPosition(pos);
-                infoWindow.setContent("Location found.");
-                infoWindow.open(map);
+                //infoWindow.setPosition(pos);
+                //infoWindow.setContent("Location found.");
+                //infoWindow.open(map);
                 map.setCenter(pos);
             },
             () => 
@@ -66,21 +66,23 @@ function onClickVerifyAddress()
     let vStreet = street.value;
     let vCity = city.value;
     let vPC = pc.value;
-    let address = vNb.concat(vStreet, vCity, vPC);
-    var position = codeAddress(address);
-    console.log(position);
+    let address = vNb.concat(" ", vStreet, " " , vCity, " ", vPC);
+    console.log(address);
+    codeAddress(address);
+    //console.log(position);
 }
 
 function codeAddress(address) {
     //https://gist.github.com/lazarofl/3901081
     let geocoder = new google.maps.Geocoder();
-    var result;
+    var marker;
+    //var result;
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             map.setCenter(results[0].geometry.location);
-            result = results[0].geometry.location;
-            console.log(result);
-
+            //result = results[0].geometry.location;
+            //console.log(results[0].geometry.location.lat());
+            createFields(results[0].geometry.location);
             marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location,
@@ -92,5 +94,29 @@ function codeAddress(address) {
         }
     });
 
-    return result;
+    //return result;
+}
+
+function createFields (location)
+{
+    const formProvider = document.querySelector(".serviceProviderRegistrationForm");
+    //console.log(formProvider);
+    const formEvent = document.querySelector(".addNewEventRegistrationForm");
+
+    const inputLat = document.createElement("input");
+    inputLat.type = "number";
+    inputLat.name = "lat";
+    inputLat.value = location.lat();
+    inputLat.style.display = "none";
+
+    const inputLong = document.createElement("input");
+    inputLong.type = "number";
+    inputLong.name = "lgn";
+    inputLong.value = location.lng();
+    inputLong.style.display = "none";
+
+    formProvider.appendChild(inputLat);
+    formProvider.appendChild(inputLong);
+    formEvent.appendChild(inputLat);
+    formEvent.appendChild(inputLong);
 }
