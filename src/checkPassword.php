@@ -64,7 +64,6 @@ else
             window.opener.location.href = window.opener.location.href;
             setTimeout('window.close()',1000);
             </script>";
-        //echo "<script>location.reload();</script>";
     }
     else
     {

@@ -1,3 +1,7 @@
+html {
+    font-size: 1rem;
+}
+
 .expandedCardContainer {
     border:2px solid black;
     border-radius: 20px;

@@ -1,4 +1,9 @@
 /* BEGINING OF LOGIN FORM */
+
+html {
+    font-size: 1rem;
+}
+
 #loginFormDiv{
     background-color: white;
     z-index: 20;
