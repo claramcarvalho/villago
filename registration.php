@@ -9,6 +9,23 @@
 
 </head>
 <script type="text/javascript">
+    function onSubmitServiceFinderRegistration(){
+        let name = document.getElementById("fullName").value
+        let email = document.getElementById("email").value
+        let phone = document.getElementById("phone").value
+        let pass = document.getElementById("password").value
+        let conPass = document.getElementById("confirmPassword").value
+        
+        if (name == "" || email == "" || phone == "" || pass == "" || conPass == "")
+        {
+            alert("Some obligatory field is empty");
+        } else {
+            alert("User registered : " + name);
+            document.getElementById("newFinderFormDiv").style.display = "none";
+            document.getElementById("addNewRoleDiv").style.display = "block";
+        }
+    }
+    
     function hideServiceFinderRegistration(){
         document.getElementById("newFinderFormDiv").style.display = "none";
         document.getElementById("addNewRoleDiv").style.display = "block";
@@ -48,10 +65,9 @@
     }
 </script>
 <body class="registrationFormBody">
-    <?php session_start();?>
     <section class="sectionForms">
-
-        <div id="newFinderFormDiv" style="display:block">
+        
+        <div id="newFinderFormDiv" <?php session_start(); if(isset($_SESSION["NAME"])) {echo " style='display:none'";} else {echo " style='display:block'";};?>>
             <div class="serviceFinderRegistrationFormHeader">Service Finder Registration</div>
             <form class="serviceFinderRegistrationForm" id="registrationForm">
 
@@ -69,8 +85,7 @@
             </form>            
         </div>
 
-        <div id="addNewRoleDiv" style="display:none">
-            
+        <div id="addNewRoleDiv" <?php if(isset($_SESSION["NAME"])) {echo " style='display:block'";};?>>
             <span class="chooseRoleQuestionTitle">Do you want to choose another role?</span>
             <div class="chooseRoleQuestionDiv">
                 <label for="chooseYes">Yes</label>
@@ -90,17 +105,9 @@
                 <input type="radio" id="chooseCulturalPromoter" name="chooseService" value="Cultural Promoter">
             </div>
             <div id="submitAddNewRoleDiv" style="display:none">
-                <button id="submitAddNewRole" value="submit" onclick=" radioButtonsChooseNewRole()">Submit</button>
+                <button id="submitAddNewRole" value="submit" onclick="radioButtonsChooseNewRole()">Submit</button>
             </div>
         </div>
-
-        <?php 
-            if(!isset($_SESSION["NAME"]) || $_SESSION["NAME"] == "") {
-                echo '<script type="text/javascript">showServiceFinderRegistration();</script>';
-            } else {
-                echo '<script type="text/javascript">hideServiceFinderRegistration();</script>';
-            }
-        ?>
 
         <div id ="newProviderFormDiv" style="display: none"> 
             <div class="serviceProviderRegistrationFormHeader">Service Provider Registration</div>
@@ -152,14 +159,24 @@
                 <button id="submitAddNewEvent" value="submit">Submit</button>
             </form>
         </div>
+    </section>
 
-        
-        
+    <section class="sectionMap" style="display: block">
+        <div id="mapGoogle"></div>    
+        <script>
+            (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+                key: "AIzaSyCfOFNxXGnb4od4rF9a3c4eKmECqbblPF8",
+                v: "weekly",
+                // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+                // Add other bootstrap parameters as needed, using camel case.
+            });
+        </script>
     </section>
 
 </body>
 <script type="module" src="public\js\validatePassword.js"></script>
 <script type="module" src="public\js\formsLoginSignUp.js"></script>
+<script type="module" src="public\js\Geocode.js"></script>
 <script src="public\js\registration.js"></script>
 </html>
 

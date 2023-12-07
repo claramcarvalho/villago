@@ -67,16 +67,20 @@ function onClickVerifyAddress()
     let vCity = city.value;
     let vPC = pc.value;
     let address = vNb.concat(vStreet, vCity, vPC);
-    
-    position = codeAddress(address);
+    var position = codeAddress(address);
+    console.log(position);
 }
 
 function codeAddress(address) {
     //https://gist.github.com/lazarofl/3901081
     let geocoder = new google.maps.Geocoder();
+    var result;
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             map.setCenter(results[0].geometry.location);
+            result = results[0].geometry.location;
+            console.log(result);
+
             marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location,
@@ -88,5 +92,5 @@ function codeAddress(address) {
         }
     });
 
-    return results[0].geometry.location;
+    return result;
 }
