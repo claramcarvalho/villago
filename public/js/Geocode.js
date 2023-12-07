@@ -62,6 +62,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos)
 
 function onClickVerifyAddress()
 {
+    const sectionMap = document.querySelector(".sectionMap");
+    console.log(sectionMap);
+    sectionMap.style.display = "block";
+
     let vNb = nb.value;
     let vStreet = street.value;
     let vCity = city.value;
@@ -69,7 +73,7 @@ function onClickVerifyAddress()
     let address = vNb.concat(" ", vStreet, " " , vCity, " ", vPC);
     console.log(address);
     codeAddress(address);
-    //console.log(position);
+
 }
 
 function codeAddress(address) {
