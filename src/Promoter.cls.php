@@ -2,6 +2,7 @@
 class Promoter {
     private $promoterId;
     private $companyName;
+    private $listOfEvents;
 
     function __construct ($prmId = null, $cN = null)
     {
@@ -25,6 +26,16 @@ class Promoter {
         return $this->companyName;
     }
 
+    public function getListOfEvents()
+    {
+        return $this->listOfEvents;
+    }
+
+
+    public function setListOfEvents($listOfEvents)
+    {
+        $this->listOfEvents = $listOfEvents;
+    }
     /**
      * @param string $promoterId
      */
