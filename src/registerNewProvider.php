@@ -9,13 +9,16 @@ $companyNumber=$_GET["locationNumber"];
 $companyCity=$_GET["city"];
 $companyPostalCode=$_GET["postalCode"];
 $companyProvince=$_GET["province"];
+$companyLat = $_GET["lat"];
+$companyLgn = $_GET["lgn"];
 
 $address = $companyNumber." ".$companyStreet.", ".$companyCity.", ".$companyProvince." ".$companyPostalCode;
 
 echo $companyName."</br>";
 echo $address."</br>";
+echo $companyLat;
 
-$sqlStmt = "INSERT INTO provider (Address, CompanyName, Latitude, Longitude) VALUES ($address','$companyName',0,0)";
+$sqlStmt = "INSERT INTO provider (Address, CompanyName, Latitude, Longitude) VALUES ($address','$companyName',$companyLat,$companyLgn)";
 
 $queryNewUser = mysqli_query($connection,$sqlStmt);
 
