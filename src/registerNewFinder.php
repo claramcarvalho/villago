@@ -3,20 +3,23 @@ require_once 'dbconfig.php';
 require_once 'Finder.cls.php';
 session_start();
 
-echo "<h2>Welcome to the database '$dbname', $user!</h2>";
-
 $finderName=$_GET["fullName"];
 $finderEmail=$_GET["email"];
 $finderPhone=$_GET["phone"];
 $finderPassword=$_GET["password"];
 
-$sqlStmt = "INSERT INTO finder (Name, Email, Phone, Password) VALUES ('$finderName','$finderEmail','$finderPhone','$finderPassword')";
+if ($finderName == "" || $finderEmail == "" || $finderPhone == "" || $finderPassword == ""){
+    echo "<script>alert('Some important field is empty');</script>";
+    echo "<script>location = '../registration.php';</script>";
+}
+else {
+    $sqlStmt = "INSERT INTO finder (Name, Email, Phone, Password) VALUES ('$finderName','$finderEmail','$finderPhone','$finderPassword')";
+    $queryNewUser = mysqli_query($connection,$sqlStmt);
+}
 
-$queryNewUser = mysqli_query($connection,$sqlStmt);
 
 if ($queryNewUser == true)
 {
-    echo "Good job, user added!";
     $sqlStmt2 = "SELECT nbId FROM finder WHERE Email = '$finderEmail';";
     $queryId = mysqli_query($connection,$sqlStmt2);
     $count = mysqli_num_rows($queryId);
@@ -60,10 +63,6 @@ if ($queryNewUser == true)
 
             $sqlStmt3 = "UPDATE finder SET FinderId = '$finderID' WHERE Email = '$finderEmail'";
             $queryUpdateFinderId = mysqli_query($connection,$sqlStmt3);
-            if ($queryUpdateFinderId == true)
-            {
-                //echo "Good job, user id was updated!!";
-            }
         }
-    echo "<script>location = '../registration.php';</script>";
+        echo "<script>location = '../registration.php';</script>";
 }
