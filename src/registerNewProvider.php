@@ -9,22 +9,18 @@ $companyNumber=$_GET["locationNumber"];
 $companyCity=$_GET["city"];
 $companyPostalCode=$_GET["postalCode"];
 $companyProvince=$_GET["province"];
-$companyLat = $_GET["lat"];
-$companyLgn = $_GET["lgn"];
+$companyLat = $_GET["latitude"];
+$companyLgn = $_GET["longitude"];
+$name = $_SESSION["NAME"];
 
 $address = $companyNumber." ".$companyStreet.", ".$companyCity.", ".$companyProvince." ".$companyPostalCode;
 
-echo $companyName."</br>";
-echo $address."</br>";
-echo $companyLat;
-
-$sqlStmt = "INSERT INTO provider (Address, CompanyName, Latitude, Longitude) VALUES ($address','$companyName',$companyLat,$companyLgn)";
+$sqlStmt = "INSERT INTO provider (Address, CompanyName, Latitude, Longitude) VALUES ('$address','$companyName',$companyLat,$companyLgn)";
 
 $queryNewUser = mysqli_query($connection,$sqlStmt);
 
 if ($queryNewUser == true)
 {
-    echo "Good job, user added!";
     $sqlStmt3 = "SELECT nbId FROM finder WHERE Name = '$name';";
     $queryId = mysqli_query($connection,$sqlStmt3);
     $count = mysqli_num_rows($queryId);
@@ -34,7 +30,7 @@ if ($queryNewUser == true)
         $row = mysqli_fetch_array($queryId);
         $id = $row["nbId"];
         $nbdigits = strlen((string)$id);
-        $nbzeros = 6 - $nbdigits;
+        $nbzeros = 4 - $nbdigits;
         $providerID = "PR";
         $i = 0;
         while ($i<$nbzeros)
@@ -44,7 +40,7 @@ if ($queryNewUser == true)
         }
         $providerID = $providerID.(string)$id;
         //echo $finderID;
-        $sqlStmt3 = "UPDATE provider SET ProviderId = '$providerID' WHERE Name = '$companyName'";
+        $sqlStmt3 = "UPDATE provider SET ProviderId = '$providerID' WHERE CompanyName = '$companyName'";
         $sqlStmt4 = "UPDATE finder SET ProviderId = '$providerID' WHERE Name = '$name'";
         $queryUpdateToProviderId = mysqli_query($connection,$sqlStmt3);
         $queryUpdateToFinderId = mysqli_query($connection,$sqlStmt4);

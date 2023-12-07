@@ -93,6 +93,7 @@ function codeAddress(address) {
                 draggable: true,
                 icon: 'images/icon/default.png'
             });
+            document.getElementById("submitServiceProvider").style.display = "block";
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }
@@ -111,16 +112,19 @@ function createFields (location)
     inputLat.type = "number";
     inputLat.name = "lat";
     inputLat.value = location.lat();
-    inputLat.style.display = "none";
+    document.getElementById("latitude").value = inputLat.value;
+//    inputLat.style.display = "block";
 
     const inputLong = document.createElement("input");
     inputLong.type = "number";
     inputLong.name = "lgn";
     inputLong.value = location.lng();
-    inputLong.style.display = "none";
+    document.getElementById("longitude").value = inputLong.value;
 
-    formProvider.appendChild(inputLat);
-    formProvider.appendChild(inputLong);
-    formEvent.appendChild(inputLat);
-    formEvent.appendChild(inputLong);
+    //    inputLong.style.display = "block";
+
+    // formProvider.appendChild(inputLat);
+    // formProvider.appendChild(inputLong);
+    // formEvent.appendChild(inputLat);
+    // formEvent.appendChild(inputLong);
 }

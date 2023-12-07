@@ -124,8 +124,12 @@
                 <input type="text" id="postalCode" name="postalCode">
                 <label for="province">Province:</label>
                 <input type="text" id="province" name="province">
+                <label for="latitude">Latitude:</label>
+                <input type="text" id="latitude" name="latitude">
+                <label for="longitude">Longitude:</label>
+                <input type="text" id="longitude" name="longitude">
                 <button id="verifyProviderAddress" type="button" value="ProviderAddress">Verify Address</button>
-                <button formaction="./src/registerNewProvider.php"  id="submitServiceProvider" value="submit">Submit</button>
+                <button formaction="./src/registerNewProvider.php"  id="submitServiceProvider" value="submit" style="display:none">Submit</button>
             </form>
         </div>
 
