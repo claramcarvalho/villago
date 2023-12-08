@@ -34,7 +34,7 @@ if ($queryNewUser == true)
         $row = mysqli_fetch_array($queryId);
         $id = $row["nbId"];
         $nbdigits = strlen((string)$id);
-        $nbzeros = 6 - $nbdigits;
+        $nbzeros = 4 - $nbdigits;
         $providerID = "PR";
         $i = 0;
         while ($i<$nbzeros)
